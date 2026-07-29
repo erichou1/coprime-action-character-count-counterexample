@@ -1,10 +1,10 @@
 cff-version: 1.2.0
 message: "If you use this manuscript or its verification code, please cite it using the metadata below."
-title: "A Counterexample to a Character Count under Coprime Action"
+title: "Zero-Free Invariant Characters under Coprime Action: A Counterexample"
 type: software
 authors:
   - family-names: Hou
     given-names: Eric
 date-released: 2026-07-29
-url: "https://github.com/erichou1/coprime-action-character-count-counterexample"
-repository-code: "https://github.com/erichou1/coprime-action-character-count-counterexample"
+url: "https://github.com/erichou1/coprime-action-zero-free-characters"
+repository-code: "https://github.com/erichou1/coprime-action-zero-free-characters"

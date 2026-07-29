@@ -1,7 +1,7 @@
-# A Counterexample to a Character Count under Coprime Action
+# Zero-Free Invariant Characters under Coprime Action: A Counterexample
 
 This repository contains the manuscript and exact verification programs for
-**A Counterexample to a Character Count under Coprime Action** by Eric Hou.
+**Zero-Free Invariant Characters under Coprime Action: A Counterexample** by Eric Hou.
 The paper gives a negative answer to Problem 21.100 in the 21st issue of the
 Kourovka Notebook.
 
