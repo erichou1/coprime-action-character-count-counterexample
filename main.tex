@@ -1,0 +1,773 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdftitle={A Counterexample to a Character Count under Coprime Action},
+  pdfauthor={Eric Hou}
+}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\F}{\mathbf F}
+\newcommand{\Irr}{\operatorname{Irr}}
+\newcommand{\Ind}{\operatorname{Ind}}
+\newcommand{\Res}{\operatorname{Res}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\wt}{\operatorname{wt}}
+\newcommand{\one}{\mathbf 1}
+
+\title{A Counterexample to a Character Count under Coprime Action}
+\author{Eric Hou}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let a finite group $A$ act coprimely on a finite group $G$, and set
+$C=C_G(A)$.  For
+\[
+N_A(G)=\{\chi\in\Irr(G):\chi^a=\chi\text{ for all }a\in A,
+\ \chi(c)\neq 0\text{ for all }c\in C\},
+\]
+we consider whether $|N_A(G)|=|C/C'|$ always holds.  We construct a
+counterexample with $A\cong C_{21}$ and
+$G\cong C_2^{128}\rtimes C_2^7$.  Here $C\cong C_2^{12}$, while the
+little-groups method identifies the $A$-invariant irreducible characters
+with the $4096$ $A$-fixed Boolean functions on
+$\F_4^2\oplus\F_8$.  Their values on $C$ reduce to correlations of
+six-bit radial functions on $\F_4^2$, and the resulting binary systems
+give
+\[
+|N_A(G)|=1728<4096=|C/C'|.
+\]
+Three exact computer calculations independently check the count but are
+not used in the proof.
+\end{abstract}
+
+\section{Introduction}
+
+Let $A$ act by automorphisms on a finite group $G$, with
+$(|A|,|G|)=1$, and set $C=C_G(A)$.  We consider whether the number of
+$A$-invariant irreducible characters of $G$ that are nonzero on $C$
+must equal the number of linear characters of $C$:
+\begin{equation}\label{eq:question}
+ |N_A(G)|\stackrel{?}{=}|C/C'|,
+ \qquad
+ N_A(G)=\{\chi\in\Irr^A(G):\chi(c)\neq0\text{ for all }c\in C\}.
+\end{equation}
+This question, proposed by G. Navarro, appears as Problem 21.100 in the
+21st issue of the Kourovka Notebook \cite{kourovka}.
+
+We construct a cyclic group $A$ of order $21$ acting on a $2$-group
+$G=B\rtimes V$, where $V\cong C_2^7$ and $B$ is the additive group of
+all Boolean functions on $V$.  The action on $V$ has no nonzero fixed
+point and has twelve orbits, giving
+$C_G(A)=B^A\cong C_2^{12}$.
+
+The little-groups method gives an explicit parameterization of
+$\Irr(G)$.  Each $A$-stable translation orbit in $B$ has a unique
+$A$-fixed representative, and the only invariant character of its
+translation stabilizer is the trivial character.  Thus $\Irr^A(G)$ is
+indexed by $B^A$.  Writing an $A$-fixed Boolean function on
+$\F_4^2\oplus\F_8$ as a pair of six-bit radial functions on
+$\F_4^2$ reduces the character values on $C$ to two binary correlation
+functions.  The resulting zero criterion gives $|N_A(G)|=1728$.
+
+The construction is not claimed to have minimal order, and no claim is
+made about operator groups subject to additional restrictions.
+
+\section{The construction and its fixed subgroup}
+
+Let
+\[
+ U=\F_4^2,\qquad W=\F_8,\qquad V=U\oplus W
+\]
+as additive groups.  Choose $\omega\in\F_4^\times$ of order $3$ and
+$\zeta\in\F_8^\times$ of order $7$.  Define
+\[
+ T(x_1,x_2,y)=(\omega x_1,\omega x_2,\zeta y).
+\]
+Then $T$ is $\F_2$-linear and has order $21$.  Moreover,
+\begin{equation}\label{eq:no-fixed-V}
+ C_V(T)=0,
+\end{equation}
+because $\omega-1$ and $\zeta-1$ are nonzero field elements.
+
+Let
+\[
+ B=\{f:V\to\F_2\}
+\]
+with pointwise addition.  For $t\in V$, define
+\[
+ (\tau_t f)(x)=f(x+t).
+\]
+The additive group $V$ acts on $B$ through these translations.  Put
+\[
+ G=B\rtimes V,
+ \qquad
+ (f,t)(g,s)=(f+\tau_tg,t+s).
+\]
+Thus $|G|=2^{128}2^7=2^{135}$.
+
+Let $A=\langle a\rangle\cong C_{21}$.  Define
+\[
+ a\cdot(f,t)=(f\circ T^{-1},Tt).
+\]
+This is an automorphism of $G$, since
+\[
+ (\tau_t f)\circ T^{-1}=\tau_{Tt}(f\circ T^{-1}).
+\]
+Its restriction to $V$ is $T$, so the action is faithful.  Since
+$|A|=21$ and $|G|$ is a power of $2$, the action is coprime.
+
+\begin{proposition}\label{prop:fixed-subgroup}
+For the action above,
+\[
+ C_G(A)=B^A\cong C_2^{12}.
+\]
+In particular,
+\[
+ |C_G(A)/C_G(A)'|=4096.
+\]
+\end{proposition}
+
+\begin{proof}
+If $(f,t)\in G$ is fixed by $a$, then $Tt=t$.  Equation
+\eqref{eq:no-fixed-V} gives $t=0$, so $C_G(A)=B^A$.
+
+It remains to count the $A$-orbits on $V$.  The zero vector is one
+orbit.  The nonzero vectors in $U$ split into the five sets
+$L_i^\times$, where $L_1,\ldots,L_5$ are the one-dimensional
+$\F_4$-subspaces of $U$; each has size $3$ and is one orbit under
+multiplication by $\omega$.  The set $\{0\}\times W^\times$ is one
+orbit of size $7$.  Finally, each
+\[
+ L_i^\times\times W^\times
+\]
+is an orbit of size $21$, since the powers of $(\omega,\zeta)$ run
+through $C_3\times C_7$.
+
+The orbit sizes are therefore
+\[
+ 1,3,3,3,3,3,7,21,21,21,21,21.
+\]
+An element of $B$ is fixed by $A$ exactly when it is constant on each
+of these twelve orbits.  Hence $B^A\cong C_2^{12}$.  This group is
+abelian, so its derived subgroup is trivial and the final assertion
+follows.
+\end{proof}
+
+\section{The invariant irreducible characters}
+
+For $u,f\in B$, let
+\[
+ \langle u,f\rangle=\sum_{x\in V}u(x)f(x)\in\F_2
+\]
+and define
+\[
+ \lambda_u(f)=(-1)^{\langle u,f\rangle}.
+\]
+The map $u\mapsto\lambda_u$ identifies $B$ with $\Irr(B)$.
+
+For $u\in B$, write
+\[
+ V_u=\{t\in V:\tau_tu=u\},
+ \qquad I_u=B\rtimes V_u.
+\]
+The subgroup $I_u$ is the inertia subgroup of $\lambda_u$ in $G$.
+For $\mu\in\Irr(V_u)$, define a linear character of $I_u$ by
+\[
+ \theta_{u,\mu}(f,t)=\lambda_u(f)\mu(t).
+\]
+This is well defined because $V_u$ fixes $\lambda_u$.  Put
+\[
+ \chi_{u,\mu}=\Ind_{I_u}^G\theta_{u,\mu}.
+\]
+
+\begin{proposition}\label{prop:all-irr}
+Choose one $u$ from each translation orbit of $V$ on $B$.  Then
+\[
+ \Irr(G)=
+ \{\chi_{u,\mu}:u\text{ is a chosen representative},\
+ \mu\in\Irr(V_u)\}.
+\]
+Every character in this set has degree $[V:V_u]$.
+\end{proposition}
+
+\begin{proof}
+The subgroup $I_u$ is normal in $G$, since it is the inverse image of
+$V_u$ under $G\to G/B=V$ and $V$ is abelian.  Mackey's inner-product
+formula gives
+\[
+ \langle\chi_{u,\mu},\chi_{u,\nu}\rangle_G
+ =\sum_{gI_u\in G/I_u}
+ \langle\theta_{u,\mu},\theta_{u,\nu}^{\,g}\rangle_{I_u}.
+\]
+If $g\notin I_u$, the restrictions of
+$\theta_{u,\mu}$ and $\theta_{u,\nu}^{\,g}$ to $B$ are distinct,
+because $g$ sends $\lambda_u$ to a different translate.  Those terms
+vanish.  The identity coset contributes $1$ when $\mu=\nu$ and $0$
+otherwise.  Thus the characters $\chi_{u,\mu}$ are irreducible and are
+distinct for fixed $u$.  Characters arising from different translation
+orbits have disjoint sets of constituents on restriction to $B$, so
+they are also distinct.
+
+For one translation orbit represented by $u$, there are $|V_u|$
+characters, each of degree $[V:V_u]$.  Their contribution to the sum of
+squared degrees is
+\[
+ |V_u|[V:V_u]^2=|V|\,|V\cdot u|.
+\]
+Summing over all translation orbits in $B$ gives
+\[
+ \sum_{u,\mu}\chi_{u,\mu}(1)^2
+ =|V|\sum_{\mathcal O\subseteq B}|\mathcal O|
+ =|V||B|=|G|.
+\]
+Since these distinct irreducible characters account for the full sum
+of squared degrees, they exhaust $\Irr(G)$.
+\end{proof}
+
+\begin{lemma}\label{lem:fixed-representative}
+Every $A$-stable translation orbit in $B$ contains exactly one element
+of $B^A$.
+\end{lemma}
+
+\begin{proof}
+Suppose the translation orbit of $u$ is $A$-stable.  Then
+\[
+ a\cdot u=\tau_z u
+\]
+for some $z\in V$, determined modulo $V_u$.  The subgroup $V_u$ is
+$T$-invariant.  Indeed, if $t\in V_u$, then
+\[
+ a\cdot(\tau_tu)=\tau_{Tt}(a\cdot u)=\tau_{Tt+z}u.
+\]
+Since $a\cdot u=\tau_z u$, it follows that $\tau_{Tt}u=u$, and hence
+$Tt\in V_u$.
+
+The operator $T$ has no nonzero fixed point on $V/V_u$.  If
+$t+V_u$ is fixed, then $T^it\equiv t\pmod{V_u}$ for every $i$.  Put
+\[
+ s=\sum_{i=0}^{20}T^it.
+\]
+The vector $s$ is fixed by $T$, so $s=0$ by
+\eqref{eq:no-fixed-V}.  On the other hand,
+$s\equiv21t\equiv t\pmod{V_u}$, because $V$ has characteristic $2$.
+Thus $t\in V_u$.
+
+Therefore $T-I$ has trivial kernel on the finite-dimensional space
+$V/V_u$, and is invertible.  Choose $w$ with
+\[
+ (T-I)w\equiv z\pmod{V_u}.
+\]
+Since $V$ has characteristic $2$, the congruence gives
+$(T-I)w+z\in V_u$, and hence $Tw+z\equiv w\pmod{V_u}$.  Thus
+\[
+ a\cdot(\tau_wu)=\tau_{Tw+z}u=\tau_wu,
+\]
+so the orbit contains an $A$-fixed element.
+
+If both $u$ and $\tau_tu$ are fixed, then $t+V_u$ is fixed in
+$V/V_u$.  The preceding argument gives $t\in V_u$, so
+$\tau_tu=u$.  The fixed representative is unique.
+\end{proof}
+
+\begin{proposition}\label{prop:invariant-irr}
+The $A$-invariant irreducible characters of $G$ are precisely
+\[
+ \chi_u=\Ind_{B\rtimes V_u}^G\widetilde\lambda_u,
+ \qquad u\in B^A,
+\]
+where
+\[
+ \widetilde\lambda_u(f,t)=\lambda_u(f).
+\]
+In particular,
+\[
+ |\Irr^A(G)|=4096.
+\]
+\end{proposition}
+
+\begin{proof}
+By Proposition~\ref{prop:all-irr}, an invariant irreducible character
+must arise from an $A$-stable translation orbit.  Lemma
+\ref{lem:fixed-representative} supplies a unique representative
+$u\in B^A$.
+
+For fixed $u\in B^A$, the extension $\widetilde\lambda_u$ is
+$A$-invariant, and
+\[
+ \chi_{u,\mu}^{\,a}=\chi_{u,\mu^a}.
+\]
+The parameterization in Proposition~\ref{prop:all-irr} is injective, so
+$\chi_{u,\mu}$ is invariant if and only if $\mu$ is invariant.
+
+Write $\mu(t)=(-1)^{\ell(t)}$ for an $\F_2$-linear functional
+$\ell$ on $V_u$.  Invariance gives $\ell(Tt)=\ell(t)$, so $\ell$
+vanishes on $(T-I)V_u$.  By \eqref{eq:no-fixed-V}, the restriction of
+$T-I$ to $V_u$ is injective.  Since $V_u$ is finite-dimensional, this
+restriction is invertible.  Hence $\ell=0$ and $\mu$ is trivial.
+The parameterization follows, and Proposition
+\ref{prop:fixed-subgroup} gives $|B^A|=4096$.
+\end{proof}
+
+For $u,c\in B^A$, let $x_t=(0,t)$.  Since $I_u$ is normal in
+$G$ and $c\in B\subseteq I_u$, the induced-character formula, with
+$x_t$ ranging over representatives for $G/I_u$, gives
+\[
+ \chi_u(c)=\sum_{t\in V/V_u}
+ \widetilde\lambda_u\bigl(x_t^{-1}(c,0)x_t\bigr).
+\]
+Now
+\[
+ x_t^{-1}(c,0)x_t=(\tau_{-t}c,0)
+\]
+and
+\[
+ \langle u,\tau_{-t}c\rangle=\langle\tau_tu,c\rangle.
+\]
+Therefore
+\begin{equation}\label{eq:value-formula}
+ \chi_u(c)=\sum_{t\in V/V_u}(-1)^{\langle\tau_tu,c\rangle}.
+\end{equation}
+The summand is constant on cosets of $V_u$, so
+\begin{equation}\label{eq:value-formula-full}
+ |V_u|\chi_u(c)=
+ \sum_{t\in V}(-1)^{\langle\tau_tu,c\rangle}.
+\end{equation}
+
+\section{Radial correlations}
+
+The action of $\langle\omega\rangle$ on $U$ has six orbits,
+\[
+ \{0\},L_1^\times,\ldots,L_5^\times.
+\]
+A Boolean function on $U$ that is constant on these orbits will be
+called radial.  We encode it by
+\[
+ X=(x_0,x_1,\ldots,x_5)=(x_0,x)\in\F_2^6
+\]
+and write
+\[
+ \tau(X)=x_0+\sum_{i=1}^5x_i.
+\]
+
+\begin{lemma}[Two-slice decomposition]\label{lem:two-slice}
+Every $u\in B^A$ has a unique representation
+\[
+ u(z,w)=
+ \begin{cases}
+ X(z),&w=0,\\
+ Y(z),&w\neq0,
+ \end{cases}
+\]
+where $X$ and $Y$ are radial functions on $U$.
+\end{lemma}
+
+\begin{proof}
+The slice at $w=0$ is radial by invariance under $a$.  If $w\neq0$,
+then $a^7$ fixes $w$ and acts on $U$ as multiplication by
+$\omega^7=\omega$, so the slice at $w$ is also radial.
+
+For $w,w'\neq0$, choose $k$ such that $\zeta^kw=w'$.  Invariance gives
+\[
+ u(z,w)=u(\omega^kz,w').
+\]
+The slice at $w'$ is radial, so the right side equals $u(z,w')$.
+Hence all nonzero slices coincide.  Uniqueness is immediate.
+\end{proof}
+
+We therefore encode $u\in B^A$ by a pair
+$(X,Y)\in\F_2^6\times\F_2^6$, and use $(E,F)$ for $c\in B^A$.
+
+For radial functions $X,E$ on $U$, define
+\[
+ K_X(E)(s)=\sum_{z\in U}X(z+s)E(z)\in\F_2.
+\]
+This is again radial.
+
+\begin{lemma}[Correlation formula]\label{lem:correlation}
+Let $X=(x_0,x)$ and $E=(e_0,e)$, where $x,e\in\F_2^5$.  Put
+$s_x=\sum_i x_i$, $s_e=\sum_i e_i$, and
+$\one=(1,1,1,1,1)$.  Then
+\begin{equation}\label{eq:correlation}
+ K_X(E)=
+ \left(
+ x_0e_0+x\cdot e,
+ \ \tau(E)x+\tau(X)e+(s_xs_e+x\cdot e)\one
+ \right).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+At $s=0$,
+\[
+ K_X(E)(0)=x_0e_0+\sum_{i=1}^53x_ie_i=x_0e_0+x\cdot e.
+\]
+Fix $s\in L_i^\times$.  The terms $z=0$ and $z=s$ contribute
+$x_ie_0+x_0e_i$.  The other two nonzero elements of $L_i$ contribute
+$x_ie_i$ twice and cancel.
+
+For $j\neq i$, the three points of $s+L_j^\times$ lie one each on the
+three projective lines different from $L_i$ and $L_j$.  Indeed, none
+lies on $L_i$ or $L_j$, and two cannot lie on the same third line,
+since their difference would belong both to that line and to $L_j$.
+The contribution of $L_j^\times$ is therefore
+\[
+ e_j\sum_{k\neq i,j}x_k.
+\]
+Thus
+\[
+ K_X(E)_i=x_ie_0+x_0e_i+
+ \sum_{j\neq i}e_j\sum_{k\neq i,j}x_k.
+\]
+Expanding this expression in $\F_2$ yields the $i$th coordinate in
+\eqref{eq:correlation}.
+\end{proof}
+
+Let $u=(X,Y)$ and $c=(E,F)$.  For $t=(s,v)\in U\oplus W$, put
+\[
+ h_{u,c}(t)=\langle\tau_tu,c\rangle.
+\]
+If $v=0$, then
+\begin{equation}\label{eq:H0}
+ H_0(s):=h_{u,c}(s,0)=K_X(E)(s)+K_Y(F)(s).
+\end{equation}
+If $v\neq0$, then
+\begin{equation}\label{eq:H1}
+ H_1(s):=h_{u,c}(s,v)=K_Y(E)(s)+K_X(F)(s).
+\end{equation}
+For \eqref{eq:H1}, the $W$-coordinates $0$ and $v$ interchange the two
+slices.  The other six nonzero coordinates contribute the same term six
+times and cancel in $\F_2$.  In particular, $H_1$ is independent of
+the chosen nonzero $v$.
+
+Set
+\[
+ P=X+Y,\qquad Q=E+F.
+\]
+Bilinearity gives
+\begin{align}
+ H_0+H_1&=K_P(Q),\label{eq:Hsum}\\
+ H_0&=K_P(E)+K_Y(Q).\label{eq:H0-reduced}
+\end{align}
+
+For a radial function $H=(h_0,h_1,\ldots,h_5)$, define
+\[
+ S(H)=(-1)^{h_0}+3\sum_{i=1}^5(-1)^{h_i}.
+\]
+Equation \eqref{eq:value-formula-full} becomes
+\begin{equation}\label{eq:value-radial}
+ |V_u|\chi_u(c)=S(H_0)+7S(H_1).
+\end{equation}
+
+\section{The exact zero criterion}
+
+Let
+\[
+ \delta=(1,0,0,0,0,0),\qquad
+ J=(1,1,1,1,1,1).
+\]
+For $R\subseteq\{1,\ldots,5\}$, let
+\[
+ \rho_R=(0,\one_R),
+\]
+where $\one_R$ is the indicator vector of $R$.
+
+\begin{lemma}[Zero patterns]\label{lem:zero-patterns}
+Equation \eqref{eq:value-radial} vanishes if and only if
+\begin{equation}\label{eq:zero-pattern}
+ (H_0,H_1)=(\delta+\varepsilon J,\rho_R+\varepsilon J)
+\end{equation}
+for some $\varepsilon\in\F_2$ and some three-element subset
+$R\subseteq\{1,\ldots,5\}$.
+\end{lemma}
+
+\begin{proof}
+Write the signs associated with $H_0$ as
+$a,b_1,\ldots,b_5\in\{\pm1\}$ and those associated with $H_1$ as
+$d,e_1,\ldots,e_5\in\{\pm1\}$.  The vanishing equation is
+\[
+ a+3\sum_{i=1}^5b_i+7d+21\sum_{i=1}^5e_i=0.
+\]
+The last sum is odd.  The absolute value of the preceding terms is at
+most $1+15+7=23$, so $\sum e_i=\pm1$.
+
+If $\sum e_i=-1$, the remaining terms must total $21$.  This forces
+$a=-1$, $b_i=1$ for all $i$, and $d=1$.  Exactly three of the $e_i$
+are negative.  This is the pattern $(\delta,\rho_R)$ with $|R|=3$.
+The case $\sum e_i=1$ is its simultaneous sign reversal, obtained by
+adding $J$ to both binary vectors.
+\end{proof}
+
+A zero therefore requires
+\begin{equation}\label{eq:target}
+ K_P(Q)=H_0+H_1=\delta+\rho_R
+\end{equation}
+for a three-set $R$.
+
+Write
+\[
+ P=(p_0,p),\qquad p\in\F_2^5.
+\]
+
+\begin{lemma}\label{lem:odd-augmentation}
+If $\tau(P)=1$, then $K_P$ is invertible on the six-dimensional space
+of radial functions on $U$.
+\end{lemma}
+
+\begin{proof}
+Identify all functions on the additive group $U\cong C_2^4$ with the
+group algebra $\F_2[U]$.  Since every element of $U$ is its own
+inverse, the coefficient of $s$ in the product of $P$ and $Q$ is
+$K_P(Q)(s)$.  Thus $K_P$ is multiplication by $P$.
+
+The augmentation ideal of $\F_2[U]$ is nilpotent.  For example, after
+choosing a basis $g_1,\ldots,g_4$ of $U$ and setting $z_i=g_i+1$, one
+has
+\[
+ \F_2[U]\cong
+ \F_2[z_1,z_2,z_3,z_4]/(z_1^2,z_2^2,z_3^2,z_4^2).
+\]
+An element of augmentation $1$ is therefore $1+n$ with $n$ nilpotent,
+and is a unit.  The augmentation of the radial function $P$ is
+\[
+ p_0+3\sum_{i=1}^5p_i=\tau(P).
+\]
+Hence $P$ is a unit when $\tau(P)=1$.
+
+Multiplication by $\omega$ induces an automorphism of the group algebra
+that fixes $P$.  It also fixes the unique inverse of $P$.  The inverse
+is therefore radial, so multiplication by $P$ restricts to an
+invertible map on the radial subspace.
+\end{proof}
+
+\begin{proposition}[Complete zero criterion]\label{prop:zero-criterion}
+Let $u=(X,Y)\in B^A$, put $P=X+Y=(p_0,p)$, and write
+$Y=(y_0,y)$.  If $\tau(P)=0$, set
+\[
+ r=p+p_0\one.
+\]
+Then $\chi_u$ vanishes at some element of $C$ if and only if at least
+one of the following holds:
+\begin{enumerate}[label=\textup{(\roman*)}]
+ \item $\tau(P)=1$;
+ \item $\tau(P)=0$, $\wt(r)=2$, $\tau(Y)=1$, and
+ \[
+ r\cdot y=1+p_0.
+ \]
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Suppose first that $\tau(P)=1$.  Lemma
+\ref{lem:odd-augmentation} allows us to choose, for any three-set $R$,
+\[
+ Q=K_P^{-1}(\delta+\rho_R)
+\]
+and then
+\[
+ E=K_P^{-1}(\delta+K_Y(Q)).
+\]
+Equations \eqref{eq:Hsum} and \eqref{eq:H0-reduced} give
+$H_0=\delta$ and $H_1=\rho_R$.  Lemma
+\ref{lem:zero-patterns} yields a zero.
+
+Assume now that $\tau(P)=0$.  For $Q=(q_0,q)$, formula
+\eqref{eq:correlation} simplifies to
+\begin{equation}\label{eq:image-even}
+ K_P(Q)=\alpha J+\beta(0,r),
+\end{equation}
+where
+\[
+ \alpha=p_0q_0+p\cdot q,
+ \qquad
+ \beta=\tau(Q).
+\]
+Indeed, the first coordinate is $\alpha$, while the five line
+coordinates are $\alpha\one+\beta r$.  The parameters satisfy
+\begin{equation}\label{eq:alpha-beta}
+ \alpha+p_0\beta=r\cdot q.
+\end{equation}
+If $r\neq0$, any prescribed pair $(\alpha,\beta)$ occurs: choose $q$
+with $r\cdot q=\alpha+p_0\beta$ and then put
+$q_0=\beta+\sum_iq_i$.
+
+The target in \eqref{eq:target} has first coordinate $1$ and a line
+part of weight $3$.  A vector in \eqref{eq:image-even} with first
+coordinate $1$ has line part $\one$ or $\one+r$, of weights $5$ and
+$5-\wt(r)$.  Since $r$ has even weight, the target occurs precisely
+when $\wt(r)=2$.  In that case $R$ is the complement of $\supp(r)$,
+and \eqref{eq:target} is equivalent to
+\begin{equation}\label{eq:Q-critical}
+ \tau(Q)=1,
+ \qquad
+ r\cdot q=1+p_0.
+\end{equation}
+
+We next determine when $E$ can be chosen in
+\eqref{eq:H0-reduced}.  Because $J$ belongs to the image of $K_P$,
+the parameter $\varepsilon$ in \eqref{eq:zero-pattern} is immaterial.
+The required solvability is equivalent to
+\begin{equation}\label{eq:residual-membership}
+ \delta+K_Y(Q)\in\langle J,(0,r)\rangle.
+\end{equation}
+Write $t=\tau(Y)$ and $\sigma=\sum_iq_i$.  Since $\tau(Q)=1$, one has
+$q_0=1+\sigma$.  Substituting \eqref{eq:correlation} into
+\eqref{eq:residual-membership}, and subtracting the multiple of $J$
+determined by the first coordinate, gives
+\begin{equation}\label{eq:critical-affine}
+ y+tq+(1+y_0+t\sigma)\one\in\{0,r\}.
+\end{equation}
+
+If $t=0$, the coordinate sum of the left side of
+\eqref{eq:critical-affine} is
+\[
+ \sum_i y_i+1+y_0=1,
+\]
+since $\sum_i y_i=y_0$.  Both $0$ and $r$ have even coordinate sum,
+so $t=0$ is impossible.  Thus $\tau(Y)=1$.
+
+Taking the dot product of \eqref{eq:critical-affine} with $r$ gives
+$r\cdot y=r\cdot q$, because $r\cdot\one=r\cdot r=0$ in $\F_2$.
+Equation \eqref{eq:Q-critical} now gives
+\[
+ r\cdot y=1+p_0.
+\]
+Conversely, suppose $\tau(Y)=1$ and $r\cdot y=1+p_0$.  Define
+\[
+ q=y+(1+y_0)\one,
+ \qquad q_0=1.
+\]
+Since $\sum_i y_i=1+y_0$, one has $\sum_iq_i=0$ and hence
+$\tau(Q)=1$.  Also $r\cdot q=r\cdot y=1+p_0$, because
+$r\cdot\one=0$.  Equation \eqref{eq:Q-critical} holds, and the left
+side of \eqref{eq:critical-affine} is zero.  Thus an appropriate $E$
+exists, and the character has a zero.
+\end{proof}
+
+\section{Counting the zero-free characters}
+
+\begin{theorem}\label{thm:main}
+For the action constructed in Section~2,
+\[
+ |N_A(G)|=1728
+ \qquad\text{and}\qquad
+ |C_G(A)/C_G(A)'|=4096.
+\]
+In particular, the equality in \eqref{eq:question} does not hold for
+all coprime actions.
+\end{theorem}
+
+\begin{proof}
+The second equality is Proposition~\ref{prop:fixed-subgroup}.  To
+obtain the first, count the pairs $(X,Y)$ that fail both conditions in
+Proposition~\ref{prop:zero-criterion}.
+
+The change of variables
+\[
+ (X,Y)\longleftrightarrow(P,Y),
+ \qquad P=X+Y,
+\]
+is a bijection on $\F_2^6\times\F_2^6$.  There are $32$ choices of
+$P$ with $\tau(P)=1$, and Proposition
+\ref{prop:zero-criterion} shows that all $64$ choices of $Y$ then give
+vanishing characters.
+
+Suppose $\tau(P)=0$.  The map
+\[
+ P=(p_0,p)\longmapsto(p_0,r),
+ \qquad r=p+p_0\one,
+\]
+is a bijection between such $P$ and pairs in which $p_0\in\F_2$ and
+$r\in\F_2^5$ has even weight.  There are
+\[
+ 2,\qquad 2\binom52=20,\qquad 2\binom54=10
+\]
+choices with $\wt(r)=0,2,4$, respectively.
+
+If $\wt(r)=0$ or $4$, every one of the $64$ choices of $Y$ is
+zero-free.  Fix a critical $P$ with $\wt(r)=2$.  Vanishing is equivalent
+to the two affine equations
+\[
+ \tau(Y)=1,
+ \qquad
+ r\cdot y=1+p_0.
+\]
+These equations are independent: the first involves $y_0$, while the
+second does not and $r\neq0$.  Exactly $2^{6-2}=16$ of the $64$ choices
+of $Y$ satisfy both equations, leaving $48$ zero-free choices.
+Therefore
+\[
+ \begin{aligned}
+ |N_A(G)|
+ &=2\cdot64+10\cdot64+20\cdot48\\
+ &=128+640+960\\
+ &=1728.
+ \end{aligned}
+\]
+Since $1728<4096$, the equality in \eqref{eq:question} fails.
+\end{proof}
+
+\begin{remark}[A single explicit zero]\label{rem:witness}
+The strict inequality can be seen without the full count.  Let
+$u=\delta_0$ be the indicator of $0\in V$.  Then $V_u=0$, and
+$\chi_u=\Ind_B^G\lambda_u$ is an $A$-invariant irreducible character of
+degree $128$.  Choose three distinct projective lines
+$L_1,L_2,L_3$ in $U$ and let $c$ be the indicator of
+\[
+ \{0\}\cup\bigcup_{i=1}^3(L_i^\times\times W^\times).
+\]
+This set is $A$-stable and has size $1+3\cdot21=64$, so $c\in C$ and
+\[
+ \chi_u(c)=\sum_{t\in V}(-1)^{c(t)}=64-64=0.
+\]
+The full analysis above gives the exact count $1728$.
+\end{remark}
+
+\section{Verification and limitations}
+
+Three exact Python implementations were used as independent checks: a
+full integer Walsh-transform computation, a direct computation in
+$\F_4^2\oplus\F_8$, and a binary linear-algebra test based on the twenty
+zero patterns in Lemma~\ref{lem:zero-patterns}.  Each returns $1728$
+zero-free characters and $2368$ characters with a zero.  These
+computations are not used in the proof.  The source code is available at
+\url{https://github.com/erichou1/coprime-action-character-count-counterexample}.
+
+The example is not claimed to be minimal.  It uses a cyclic operator
+group of order $21$, and the argument does not address versions of the
+question with additional restrictions on $A$ or $G$.
+
+\section*{Acknowledgments}
+
+The author used OpenAI's ChatGPT (GPT-5.6 Thinking) during the
+preparation of this manuscript for mathematical exploration, checking
+intermediate arguments and edge cases, generating exact verification
+code, and editorial revision.  The author reviewed the resulting
+arguments and takes responsibility for the contents of the paper.
+
+\begin{thebibliography}{9}
+
+\bibitem{kourovka}
+E. I. Khukhro and V. D. Mazurov (eds.),
+\emph{Unsolved Problems in Group Theory: The Kourovka Notebook},
+No.~21, Sobolev Institute of Mathematics, Novosibirsk, 2026,
+Problem~21.100, p.~178; arXiv:1401.0300v45.
+
+\end{thebibliography}
+
+\end{document}
