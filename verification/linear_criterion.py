@@ -1,8 +1,17 @@
-"""Enumeration using Proposition 6.3 of the manuscript."""
+"""Enumeration using the complete zero criterion of the manuscript.
+
+See the proposition "Complete zero criterion" in the section
+"The exact zero criterion".
+"""
+
+
+def popcount(value: int) -> int:
+    # int.bit_count() requires Python 3.10+; this works everywhere.
+    return bin(value).count("1")
 
 
 def parity(value: int) -> int:
-    return value.bit_count() & 1
+    return popcount(value) & 1
 
 
 def character_has_zero(p_value: int, y_value: int) -> bool:
@@ -19,7 +28,7 @@ def character_has_zero(p_value: int, y_value: int) -> bool:
     r = p ^ (0b11111 if p0 else 0)
 
     return (
-        r.bit_count() == 2
+        popcount(r) == 2
         and parity(y_value) == 1
         and parity(r & y) == (1 ^ p0)
     )

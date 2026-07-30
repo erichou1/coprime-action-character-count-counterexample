@@ -11,6 +11,11 @@ N_FUNCTIONS = 1 << 12
 N_POINTS = 1 << 7
 
 
+def popcount(value: int) -> int:
+    # int.bit_count() requires Python 3.10+; this works everywhere.
+    return bin(value).count("1")
+
+
 def t_action(value: int) -> int:
     a0 = value & 1
     a1 = (value >> 1) & 1
@@ -80,7 +85,7 @@ def linear_map_rows() -> np.ndarray:
         for output_orbit, output_mask in enumerate(basis):
             input_mask = 0
             for input_orbit in range(12):
-                if (translated_basis[translation][input_orbit] & output_mask).bit_count() & 1:
+                if popcount(translated_basis[translation][input_orbit] & output_mask) & 1:
                     input_mask |= 1 << input_orbit
             rows[translation, output_orbit] = input_mask
     return rows
@@ -102,7 +107,7 @@ def zero_free_statuses() -> np.ndarray:
     """Return the zero-free status for every 12-bit A-fixed function."""
     rows = linear_map_rows()
     all_u = np.arange(N_FUNCTIONS, dtype=np.uint16)
-    parity = np.array([value.bit_count() & 1 for value in range(N_FUNCTIONS)], dtype=np.uint8)
+    parity = np.array([popcount(value) & 1 for value in range(N_FUNCTIONS)], dtype=np.uint8)
     frequencies = np.zeros((N_FUNCTIONS, N_FUNCTIONS), dtype=np.int16)
     row_indices = np.arange(N_FUNCTIONS)
 
