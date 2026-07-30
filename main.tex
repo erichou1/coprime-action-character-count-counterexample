@@ -40,40 +40,26 @@ on the fixed-point subgroup}
 \maketitle
 
 \begin{abstract}
-Let a finite group $A$ act coprimely on a finite group $G$, and put
-$C=C_G(A)$.  Burnside's theorem says that the irreducible characters of
-a group that vanish nowhere are exactly the linear ones.  Navarro asked,
-in Problem 21.100 of the 21st Kourovka Notebook, whether the coprime
+Let a finite group $A$ act coprimely on a finite group $G$ and put
+$C=C_G(A)$.  Burnside's theorem says the irreducible characters of a
+group vanishing nowhere are exactly the linear ones, and Navarro asked
+in Problem 21.100 of the 21st Kourovka Notebook whether the coprime
 analogue holds: is the number of $A$-invariant $\chi\in\Irr(G)$ with
-$\chi_C$ nowhere zero always $|C/C'|$?  We answer this negatively.
+$\chi_C$ nowhere zero always $|C/C'|$?  We answer this negatively.  For
+$A$ cyclic of order $21$ acting on $G=B\rtimes V$, where
+$V=\F_4^2\oplus\F_8$ and $B$ is the group of Boolean functions on $V$,
+the fixed subgroup $C\cong C_2^{12}$ carries all $4096$ invariant
+characters while only $1728$ of them are nowhere zero on $C$.
 
-Our example has $A$ cyclic of order $21$ acting on $G=B\rtimes V$, where
-$V=\F_4^2\oplus\F_8$ and $B$ is the group of Boolean functions on $V$.
-Here $C\cong C_2^{12}$ is abelian and carries all $4096$ invariant
-characters, yet an explicit invariant character of degree $128$ vanishes
-at an explicit element of $C$; a refinement gives the exact count
-$|N_A(G)|=1728$.
-
-Three further consequences follow.  Since $C$ is abelian, the example
-refutes the criterion proposed with the problem: that $\chi_C$ be
-nowhere zero exactly when the Glauberman--Isaacs correspondent $\chi^*$
-is linear.  This is Problem 6.3 of Navarro's problem list, and by a
-theorem of Isaacs the example equally refutes the corresponding
-statement about his $A$-head characters, answering a question that
-closes that work.  It
-shows that the $p$-group hypothesis, under which one direction of
-Problem 6.3 is known, cannot be dropped.  Finally, passing to
-$\Gamma=G\rtimes A$, whose Carter subgroup is $K=C\times A$, gives a
-solvable group with $36288$ characters nowhere zero on $K$ against
-$|K/K'|=86016$.  This refutes a conjecture of Navarro that Isaacs
-reports is supported by abundant computational evidence.
-
-None of this depends on the particular $V$: the construction works
-whenever $V$ has an $A$-stable subset of half its size.  Infinitely many
-pairs $(A,V)$ qualify, and none of dimension below $7$ does; over all
-operator groups of odd order the least dimension is therefore $7$, the
-least group order $2^{135}$, and the least operator order $15$.  Exact machine verifications, independent
-of the proofs, accompany the paper.
+Because $C$ is abelian the same example refutes Problem 6.3 of Navarro's
+problem list, and with it the corresponding statement about the head
+characters of Isaacs; passing to $G\rtimes A$ refutes Problem 6.7, a
+conjecture Isaacs reports is supported by abundant computational
+evidence.  The construction needs only that $V$ have an $A$-stable
+subset of half its size, which holds for infinitely many pairs $(A,V)$
+and, as we show, for none below dimension $7$ --- so the example is
+minimal over all operator groups of odd order.  Exact machine
+verifications, independent of the proofs, accompany the paper.
 \end{abstract}
 
 \section{Introduction}

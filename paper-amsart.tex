@@ -33,27 +33,25 @@
 
 \begin{abstract}
 Let a finite group $A$ act coprimely on a finite group $G$ and put
-$C=C_G(A)$; Problem 21.100 of the Kourovka Notebook asks whether the
-number of $A$-invariant $\chi\in\Irr(G)$ with $\chi_C$ nowhere zero is
-always $|C/C'|$, the coprime analogue of Burnside's theorem on
-nonvanishing characters.  We answer this negatively, with $A$ cyclic of
-order $21$ acting on $G=B\rtimes V$, where $V=\F_4^2\oplus\F_8$ and $B$
-is the group of Boolean functions on $V$: here $C\cong C_2^{12}$ carries
-all $4096$ invariant characters, yet only $1728$ of them are nowhere
-zero on $C$.  Since $C$ is abelian, the example also refutes Problem 6.3 of
-Navarro's problem list --- that $\chi_C$ be nowhere zero exactly when
-the Glauberman--Isaacs correspondent is linear --- and hence, by a
-theorem of Isaacs, the corresponding statement about his head
-characters.
-Passing to $\Gamma=G\rtimes A$, whose Carter subgroup is $K=C\times A$,
-gives a solvable group with $36288$ characters nowhere zero on $K$
-against $|K/K'|=86016$, refuting a conjecture of Navarro reported by
-Isaacs.  The construction works whenever $V$ has an $A$-stable subset of
-half its size, which happens for infinitely many pairs $(A,V)$ and for
-none of dimension below $7$; over all operator groups of odd order the
-least dimension is therefore $7$, the least group order $2^{135}$, and
-the least operator order $15$.  Exact
-machine verifications, independent of the proofs, accompany the paper.
+$C=C_G(A)$.  Burnside's theorem says the irreducible characters of a
+group vanishing nowhere are exactly the linear ones, and Navarro asked
+in Problem 21.100 of the 21st Kourovka Notebook whether the coprime
+analogue holds: is the number of $A$-invariant $\chi\in\Irr(G)$ with
+$\chi_C$ nowhere zero always $|C/C'|$?  We answer this negatively.  For
+$A$ cyclic of order $21$ acting on $G=B\rtimes V$, where
+$V=\F_4^2\oplus\F_8$ and $B$ is the group of Boolean functions on $V$,
+the fixed subgroup $C\cong C_2^{12}$ carries all $4096$ invariant
+characters while only $1728$ of them are nowhere zero on $C$.
+
+Because $C$ is abelian the same example refutes Problem 6.3 of Navarro's
+problem list, and with it the corresponding statement about the head
+characters of Isaacs; passing to $G\rtimes A$ refutes Problem 6.7, a
+conjecture Isaacs reports is supported by abundant computational
+evidence.  The construction needs only that $V$ have an $A$-stable
+subset of half its size, which holds for infinitely many pairs $(A,V)$
+and, as we show, for none below dimension $7$ --- so the example is
+minimal over all operator groups of odd order.  Exact machine
+verifications, independent of the proofs, accompany the paper.
 \end{abstract}
 
 \maketitle
