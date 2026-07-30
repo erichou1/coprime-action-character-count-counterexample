@@ -5,6 +5,7 @@
 \usepackage{microtype}
 \usepackage{enumitem}
 \usepackage{booktabs}
+\usepackage{xurl}
 \usepackage[hidelinks]{hyperref}
 \emergencystretch=1em
 \hypersetup{pdftitle={Coprime actions and nonvanishing characters}}
@@ -1786,11 +1787,8 @@ differently from ours.
 
 The proofs above are self-contained; the computations described here are
 independent checks and are used nowhere in them.  All of them are exact,
-in integer and $\F_2$ arithmetic with no floating point, and are
-available at
-\begin{center}
-\url{https://github.com/erichou1/coprime-action-zero-free-characters}
-\end{center}
+in integer and $\F_2$ arithmetic with no floating point, and all are
+available in \cite{code}.
 
 Three programs compute $|N_A(G)|$ by different routes --- a $128$-point
 integer Walsh transform, a direct computation in $\F_4^2\oplus\F_8$ from
@@ -1799,18 +1797,21 @@ the twenty zero patterns of Lemma~\ref{lem:zero-patterns} --- and all
 three return $1728$.  A fourth evaluates the characters of $\Gamma$ on
 $K$ by Lemma~\ref{lem:gamma-values} and returns the $36288$ of
 Theorem~\ref{thm:carter}.  Further scripts reproduce the design
-enumeration of Section~\ref{sec:design}, the support-sum criterion of
-Theorem~\ref{thm:dim-six}, and the subgroup search behind
-Proposition~\ref{prop:noncyclic}; an accompanying test suite checks the
-orbit sizes, the correlation identity~\eqref{eq:correlation}, the twenty
-zero patterns, and the vanishing of Theorem~\ref{thm:counterexample}.
+enumeration of Section~\ref{sec:design} and check
+Theorem~\ref{thm:dim-six} twice over: once through the support-sum
+criterion on which its proof rests, and once through an independent
+enumeration of the odd-order subgroups of the relevant groups
+$\Gamma L(m,2^e)$, which confirms its conclusion in dimension at most
+$5$.  An accompanying test suite checks the orbit sizes, the correlation
+identity~\eqref{eq:correlation}, the twenty zero patterns, and the
+vanishing of Theorem~\ref{thm:counterexample}.
 
 Since $|G|=2^{135}$, the group cannot be constructed in a computer
 algebra system, and nothing above requires it: every computation runs on
 $V$, with $128$ points and $12$ orbits, on $B^A$, with $4096$ elements,
 or on multisets of divisors and small matrix groups over $\F_2$.
 
-A further script checks the ingredients in GAP \cite{gap}, using that
+A further script in \cite{code} checks the ingredients in GAP \cite{gap}, using that
 system's own character theory rather than any formula proved here.  It
 confirms the arithmetic of Section~\ref{sec:design} at $\dim V=7$, and
 then, in the same family $G=C_2\wr V$ at $\dim V=2$ and $3$, the
@@ -1863,6 +1864,11 @@ G.~Glauberman,
 \emph{Correspondences of characters for relatively prime operator
 groups},
 Canad. J. Math. \textbf{20} (1968), 1465--1488.
+
+\bibitem{code}
+E. Hou, \emph{Coprime actions and characters nonvanishing on the
+fixed-point subgroup: verification code}, GitHub repository, 2026.
+\url{https://github.com/erichou1/coprime-action-zero-free-characters}
 
 \bibitem{isaacs1973}
 I.~M.~Isaacs,
