@@ -265,3 +265,108 @@ Print("slack: it forces C elementary abelian, so |Irr_A(G)| = |C/C'| and a\n");
 Print("single zero refutes the count.  That is the mechanism of Theorem 2.11.\n");
 
 Print("\n=== done ===\n\n");
+
+
+#############################################################################
+
+Print("\n=== Section 5: the Carter subgroup statements (Section 9 of the paper) ===\n");
+Print("Proposition 9.1 says K = C x A is a Carter subgroup of Gamma = G x| A.\n");
+Print("Nothing above tested that, so we test it here in the small cases.\n");
+
+CheckCarter := function(F, label)
+  local G, A, Gamma, C, K, hom, Gp, Kp, ccl, Kel, nonvan, kk;
+  G := F.G;; A := F.A;;
+  Gamma := ClosureGroup(G, A);;
+  C := Centralizer(G, A);;
+  K := ClosureGroup(C, A);;
+  Print("\n--- ", label, ":  |Gamma| = ", Size(Gamma),
+        ",  |K| = ", Size(K), " ---\n");
+  Print("K = C x A ?              ", Size(K) = Size(C) * Size(A), "\n");
+  Print("K nilpotent ?            ", IsNilpotent(K), "\n");
+  Print("K self-normalizing ?     ", Normalizer(Gamma, K) = K, "\n");
+  Print("=> K is a Carter subgroup of Gamma ?  ",
+        IsNilpotent(K) and Normalizer(Gamma, K) = K, "\n");
+
+  # count irreducible characters of Gamma nowhere zero on K
+  hom := IsomorphismPcGroup(Gamma);;
+  if hom = fail then
+    Print("(Gamma not solvable; skipping the character count)\n");
+    return;
+  fi;
+  Gp := Image(hom);;
+  Kp := Image(hom, K);;
+  ccl := ConjugacyClasses(Gp);;
+  Kel := Elements(Kp);;
+  nonvan := Filtered(Irr(Gp),
+              chi -> ForAll(Kel, c -> ValAt(chi, ccl, c) <> 0));;
+  kk := Index(Kp, DerivedSubgroup(Kp));
+  Print("|Irr(Gamma)| = ", Length(Irr(Gp)),
+        ",  |K/K'| = ", kk,
+        ",  # nowhere zero on K = ", Length(nonvan), "\n");
+  Print("Problem 6.7 holds here ?  ", Length(nonvan) = kk, "\n");
+end;;
+
+CheckCarter(F2, "dim V = 2, A = C_3, fixed-point-free (unbalanced)");
+CheckCarter(F3, "dim V = 3, A = C_7, fixed-point-free (unbalanced)");
+CheckCarter(Fb, "dim V = 3, A = C_3, NOT fixed-point-free (balanced)");
+
+
+#############################################################################
+
+Print("\n=== Section 6: is there a small counterexample to Problem 21.100? ===\n");
+Print("The paper proves none exists inside its own family below |G| = 2^135.\n");
+Print("Here we search outside the family: every group of order at most the\n");
+Print("bound below, against every cyclic A of coprime order acting on it.\n");
+
+SearchSmall := function(bound)
+  local N, G, aut, cl, a, A, ordA, C, Cgens, hom, Gp, Cp, ccl, reps,
+        sig, inv, Cel, nonvan, cc, tested, bad, n, i, alpha;
+  tested := 0;; bad := [];;
+  for n in [2 .. bound] do
+    for i in [1 .. NrSmallGroups(n)] do
+      G := SmallGroup(n, i);
+      aut := AutomorphismGroup(G);
+      for cl in ConjugacyClasses(aut) do
+        a := Representative(cl);
+        ordA := Order(a);
+        if ordA > 1 and GcdInt(ordA, n) = 1 then
+          A := Group(a);
+          Cgens := Filtered(Elements(G), g -> Image(a, g) = g);
+          C := Subgroup(G, Cgens);
+          hom := IsomorphismPcGroup(G);
+          if hom = fail then continue; fi;
+          Gp := Image(hom); Cp := Image(hom, C);
+          ccl := ConjugacyClasses(Gp);
+          reps := List(ccl, Representative);
+          alpha := g -> Image(hom, Image(a, PreImagesRepresentative(hom, g)));
+          sig := PermList(List(reps,
+                   r -> PositionProperty(ccl, c -> alpha(r) in c)));
+          inv := Filtered(Irr(Gp),
+                   chi -> ForAll([1 .. Length(ccl)], j -> chi[j^sig] = chi[j]));
+          Cel := Elements(Cp);
+          nonvan := Filtered(inv,
+                      chi -> ForAll(Cel, c -> ValAt(chi, ccl, c) <> 0));
+          cc := Index(Cp, DerivedSubgroup(Cp));
+          tested := tested + 1;
+          if Length(nonvan) <> cc then
+            Add(bad, [n, i, ordA, Length(nonvan), cc]);
+            Print("  COUNTEREXAMPLE: SmallGroup(", n, ",", i, "), |A| = ",
+                  ordA, ": |N_A(G)| = ", Length(nonvan), " vs |C/C'| = ",
+                  cc, "\n");
+          fi;
+        fi;
+      od;
+    od;
+  od;
+  Print("\npairs (G, A) tested with |G| <= ", bound, ": ", tested, "\n");
+  Print("counterexamples found: ", Length(bad), "\n");
+  if Length(bad) = 0 then
+    Print("Problem 21.100 holds for every coprime cyclic action on every\n");
+    Print("group of order at most ", bound, ".\n");
+  fi;
+  return bad;
+end;;
+
+bad := SearchSmall(63);;
+
+Print("\n=== done ===\n\n");

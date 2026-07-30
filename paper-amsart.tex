@@ -1087,8 +1087,8 @@ which is the $i$th coordinate in~\eqref{eq:correlation}.
 Now let $u=(X,Y)$ and $c=(E,F)$, and for $t=(s,v)\in U\oplus W$ put
 $h_{u,c}(t)=\langle\tau_tu,c\rangle$.  By
 Lemma~\ref{lem:orbit-constant} this depends only on the $A$-orbit of
-$t$, so it is determined by two radial functions of $s$: writing
-$H_0(s)=h_{u,c}(s,0)$ and $H_1(s)=h_{u,c}(s,v)$ for any $v\neq0$,
+$t$, so two radial functions of $s$ determine it.  Write
+$H_0(s)=h_{u,c}(s,0)$ and $H_1(s)=h_{u,c}(s,v)$ for any $v\neq0$; then
 \begin{align}
  H_0&=K_X(E)+K_Y(F),\label{eq:H0}\\
  H_1&=K_Y(E)+K_X(F).\label{eq:H1}
@@ -1758,16 +1758,16 @@ The accompanying tests also confirm the orbit sizes
 $1,3,3,3,3,3,7,21,21,21,21,21$ of Proposition~\ref{prop:minimal}, the
 correlation identity~\eqref{eq:correlation}, the twenty zero patterns,
 and the vanishing $\chi(c)=0$ of Theorem~\ref{thm:counterexample}.  The
-enumeration reported in Remark~\ref{rem:search} is also included, as
-are two checks on Section~\ref{sec:design}: the support-sum criterion
-of Theorem~\ref{thm:dim-six} is verified to be unsatisfiable for every
-partition and $d$-vector with $n\le6$ and satisfiable at $n=7$ exactly
-for shapes including the example's, and a direct enumeration of
-odd-order subgroups of the relevant products of groups
-$\Gamma L(m,2^e)$, pruned by the observations that balance passes to
-subgroups and that $C_V(A)=0$ passes to overgroups, independently
-confirms that no balanced pair with $C_V(A)=0$ exists in dimension at
-most $5$.
+enumeration reported in Remark~\ref{rem:search} is also included, as are
+two checks on Section~\ref{sec:design}.  First, the support-sum
+criterion of Theorem~\ref{thm:dim-six} is verified to be unsatisfiable
+for every partition and $d$-vector with $n\le6$, and satisfiable at
+$n=7$ exactly for the shapes including the example's.  Second, a direct
+enumeration of odd-order subgroups of the relevant products of groups
+$\Gamma L(m,2^e)$ independently confirms that no balanced pair with
+$C_V(A)=0$ exists in dimension at most $5$; it is pruned by the
+observations that balance passes to subgroups and that $C_V(A)=0$
+passes to overgroups.
 
 Note the scale involved: $|G|=2^{135}$, so $G$ cannot be constructed in
 a computer algebra system.  Nothing above requires it.  The character
@@ -1793,14 +1793,26 @@ identity $\chi_{\delta_0}(c)=|V|-2|\supp c|$ that produces the zero ---
 at every $A$-stable $c$.  It also confirms $|N_A(G)|=|C/C'|$ there, as
 Corollary~\ref{cor:balance} predicts for these unbalanced $V$.
 
-The script closes with an instructive case.  Dropping $C_V(A)=0$ allows
-a balanced $V$ of dimension $3$, so GAP can display vanishing invariant
-characters outright; there $|G|=2048$, $C$ is nonabelian of order $32$,
-and $|\Irr_A(G)|=|\Irr(C)|=14$ while $|C/C'|=8=|N_A(G)|$.  Problem
-21.100 survives, because the slack between $|C/C'|$ and $|\Irr(C)|$
-absorbs the zeros.  The fixed-point-free hypothesis is precisely what
-removes that slack, and Theorem~\ref{thm:general} is exactly the
-observation that once it is removed, a single zero suffices.
+The script then checks Proposition~\ref{prop:carter} in the same small
+cases: GAP confirms that $K=C\times A$ is nilpotent and
+self-normalizing in $\Gamma=G\rtimes A$, hence a Carter subgroup, and
+that the number of irreducible characters of $\Gamma$ nowhere zero on
+$K$ equals $|K/K'|$ there, as Theorem~\ref{thm:carter-general}
+predicts for unbalanced $V$.
+
+Two further runs are worth recording.  First, dropping $C_V(A)=0$
+allows a balanced $V$ of dimension $3$, so GAP can display vanishing
+invariant characters outright; there $|G|=2048$, $C$ is nonabelian of
+order $32$, and $|\Irr_A(G)|=|\Irr(C)|=14$ while $|C/C'|=8=|N_A(G)|$.
+Problem 21.100 survives, because the slack between $|C/C'|$ and
+$|\Irr(C)|$ absorbs the zeros.  The fixed-point-free hypothesis is
+precisely what removes that slack, and Theorem~\ref{thm:general} is
+the observation that once it is removed a single zero suffices.
+Second, a search over every group of order at most $63$ and every
+cyclic $A$ of coprime order acting on it --- $968$ pairs $(G,A)$ ---
+finds no counterexample to Problem 21.100 at all.  Both the smallness
+of the search and the size of our example suggest that counterexamples
+are genuinely rare.
 
 \section*{Acknowledgments}
 

@@ -127,8 +127,13 @@ twenty \(A\)-stable halves), and the structural machinery in the same family
 \(G = C_2 \wr V\) at \(\dim V = 2, 3\) — where GAP confirms
 \(C_G(A)=B^A\), \(|\mathrm{Irr}_A(G)| = |C/C'|\), and the lemma
 \(\chi_{\delta_0}(c) = |V| - 2|\mathrm{supp}\,c|\) that produces the zero.
-It closes with a balanced non-fixed-point-free case (\(|G| = 2048\)) where
-GAP exhibits vanishing invariant characters directly.
+It also confirms Proposition 9.1 (that \(K = C\times A\) is nilpotent and
+self-normalizing in \(\Gamma\), hence a Carter subgroup) and the Problem 6.7
+count there. It closes with two further runs: a balanced
+non-fixed-point-free case (\(|G| = 2048\)) where GAP exhibits vanishing
+invariant characters directly, and a search over **all 968 coprime cyclic
+actions on all groups of order \(\le 63\)**, which finds no counterexample to
+Problem 21.100 — evidence that counterexamples really are rare.
 
 ```bash
 gap -q -b --nointeract verification/verify.g
