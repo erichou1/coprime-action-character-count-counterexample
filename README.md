@@ -119,6 +119,11 @@ system — and nothing here needs it. Every computation runs either on the
 7-dimensional space \(V\) (128 points, 12 orbits) or on the 12-dimensional
 space \(B^A\) (4096 elements).
 
+## Citing
+
+Archived on Zenodo with a permanent DOI:
+[10.5281/zenodo.21709999](https://doi.org/10.5281/zenodo.21709999) (all versions).
+
 ## Independent check in GAP
 
 Since \(|G| = 2^{135}\) cannot be built in any computer algebra system, the
