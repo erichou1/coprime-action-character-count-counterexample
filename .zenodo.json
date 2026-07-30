@@ -1,0 +1,30 @@
+{
+  "title": "Coprime actions and characters nonvanishing on the fixed-point subgroup: manuscript and verification code",
+  "description": "<p>Manuscript and exact verification programs for <em>Coprime actions and characters nonvanishing on the fixed-point subgroup</em>.</p><p>The paper answers Problem 21.100 of the 21st Kourovka Notebook negatively. For a coprime action of a cyclic group of order 21 on a 2-group of order 2^135, the number of invariant irreducible characters nonvanishing on the fixed-point subgroup is 1728, strictly less than the 4096 linear characters of that subgroup. The same example settles Problems 6.3 and 6.7 of Navarro's problem list (Publ. Mat. 67 (2023), 173-198) and two questions of Isaacs (Trans. Amer. Math. Soc. Ser. B 9 (2022), 470-498) on head characters, and the construction is shown to be minimal over all operator groups of odd order.</p><p>The repository contains the LaTeX sources, the compiled manuscript, four independent Python verification programs in exact integer and F_2 arithmetic, a GAP script checking the ingredients against that system's own character theory, and a test suite.</p>",
+  "creators": [
+    {
+      "name": "Hou, Eric"
+    }
+  ],
+  "upload_type": "publication",
+  "publication_type": "preprint",
+  "license": "other-closed",
+  "access_right": "open",
+  "keywords": [
+    "finite group theory",
+    "character theory",
+    "coprime action",
+    "Glauberman correspondence",
+    "nonvanishing characters",
+    "Carter subgroups",
+    "head characters",
+    "Kourovka Notebook"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "arXiv:1401.0300",
+      "relation": "references",
+      "scheme": "arxiv"
+    }
+  ]
+}
