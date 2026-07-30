@@ -9,6 +9,9 @@
 \emergencystretch=1em
 \hypersetup{pdftitle={Coprime actions and nonvanishing characters}}
 
+\newtheorem{lettertheorem}{Theorem}
+\renewcommand{\thelettertheorem}{\Alph{lettertheorem}}
+\newtheorem{lettercorollary}[lettertheorem]{Corollary}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{lemma}[theorem]{Lemma}
@@ -33,8 +36,9 @@
 
 \begin{abstract}
 Let a finite group $A$ act coprimely on a finite group $G$ and put
-$C=C_G(A)$.  Burnside's theorem says the irreducible characters of a
-group vanishing nowhere are exactly the linear ones, and Navarro asked
+$C=C_G(A)$.  A classical theorem of Burnside asserts that the irreducible
+characters of a group vanishing nowhere are exactly the linear ones,
+and Navarro asked
 in Problem 21.100 of the 21st Kourovka Notebook whether the coprime
 analogue holds: is the number of $A$-invariant $\chi\in\Irr(G)$ with
 $\chi_C$ nowhere zero always $|C/C'|$?  We answer this negatively.  For
@@ -58,10 +62,11 @@ of the proofs, accompany the paper.
 
 \section{Introduction}
 
-A classical theorem of Burnside states that a nonlinear
-$\chi\in\Irr(G)$ must vanish somewhere: the irreducible characters of
-$G$ that are nonvanishing on all of $G$ are exactly the linear ones, so
-their number is $|G/G'|$.  See \cite[Theorem 3.15]{isaacs-book}.
+A classical theorem of W.~Burnside asserts that a nonlinear
+$\chi\in\Irr(G)$ must vanish at some element of $G$: the irreducible
+characters of $G$ that are nonvanishing on all of $G$ are exactly the
+linear ones, so that their number is $|G/G'|$ (see
+\cite[Theorem 3.15]{isaacs-book}).
 
 Now let $A$ act on $G$ by automorphisms with $(|A|,|G|)=1$, and let
 \[
@@ -80,7 +85,7 @@ $C=G$ and $\Irr_A(G)=\Irr(G)$, so Burnside's theorem says
 $|N_1(G)|=|G/G'|$.  The following problem asks whether this persists
 relative to a coprime operator group.
 
-\begin{problem}[Navarro, \cite{kourovka}]
+\begin{problem}[G.~Navarro \cite{kourovka}]
 Suppose that $A$ and $G$ are finite groups such that $A$ acts coprimely
 on $G$ by automorphisms.  Let $C=C_G(A)$ be the fixed-point subgroup,
 and let $C'$ denote its derived subgroup.  Is it true that the number of
@@ -90,16 +95,17 @@ could show that $\chi_C$ is never zero if and only if the
 Glauberman--Isaacs correspondent $\chi^*$ of $\chi$ is linear.
 \end{problem}
 
-Behind the question stands a canonical bijection
-$\Irr_A(G)\to\Irr(C)$, $\chi\mapsto\chi^*$, given by the Glauberman
-correspondence \cite{glauberman} for solvable $A$ and by its extension
-due to Isaacs \cite{isaacs1973} in general; see also
+The question is motivated by a canonical bijection
+$\Irr_A(G)\to\Irr(C)$, $\chi\mapsto\chi^*$, constructed by
+G.~Glauberman \cite{glauberman} for solvable $A$ and extended to
+arbitrary $A$ by I.~M.~Isaacs \cite{isaacs1973}; see also
 \cite[Chapter 2]{navarro-book}.  The count $|C/C'|$ asked for is thus
 the number of \emph{linear} characters of $C$, and the proposed
 criterion would identify $N_A(G)$ with their preimage under the
-correspondence.  We show that no such identification is possible.
+correspondence.  Our principal result shows that no such identification
+is possible.
 
-\begin{theorem}\label{thm:main}
+\begin{lettertheorem}\label{thm:main}
 There exist a finite group $A\cong C_{21}$ and a finite $2$-group
 $G$ of order $2^{135}$, with $A$ acting faithfully and coprimely on
 $G$, such that
@@ -109,7 +115,7 @@ $G$, such that
  |C_G(A)/C_G(A)'|=4096 .
 \]
 In particular the equality of Problem 21.100 fails.
-\end{theorem}
+\end{lettertheorem}
 
 The group is $G=B\rtimes V$, where $V=\F_4^2\oplus\F_8$ is an
 $\F_2$-space of dimension $7$, the group $B$ is the additive group of
@@ -133,23 +139,22 @@ correspondence.  Let $\chi\in\Irr_A(G)$.  Is it true that
 $\chi^*(1)=1$ if and only if $\chi_C$ is never zero?
 \end{problem63}
 
-\begin{corollary}\label{cor:criterion}
+\begin{lettercorollary}\label{cor:criterion}
 Problem 6.3 has a negative answer.  For the action of
 Theorem~\ref{thm:main} there are $2368$ characters $\chi\in\Irr_A(G)$
 with $\chi^*(1)=1$ for which $\chi_C$ nevertheless has a zero.
-\end{corollary}
+\end{lettercorollary}
 
 Navarro writes of Problem 6.3 that he does ``not even know how to prove
 the case where $G$ is nilpotent, and this should be territory for
 counterexamples'' \cite[p.~189]{navarro-problems}.  Our $G$ is a
 $2$-group, so the counterexample lies in exactly that territory.
 Section~\ref{sec:carter} passes to $\Gamma=G\rtimes A$ and settles
-the Carter subgroup analogue as well, and
-Section~\ref{sec:navarro} then records what the example does and, just
-as importantly, does not settle among the surrounding problems of
-\cite{navarro-problems}.
+the Carter subgroup analogue as well, and Section~\ref{sec:navarro}
+records precisely which of the surrounding problems of
+\cite{navarro-problems} the example does and does not settle.
 
-\begin{corollary}\label{cor:carter-intro}
+\begin{lettercorollary}\label{cor:carter-intro}
 Let $\Gamma=G\rtimes A$ for the action of Theorem~\ref{thm:main}.  Then
 $\Gamma$ is solvable of order $2^{135}\cdot21$, the subgroup
 $K=C_G(A)\times A$ is a Carter subgroup of $\Gamma$, and exactly
@@ -157,25 +162,25 @@ $36288$ irreducible characters of $\Gamma$ do not vanish on $K$, while
 $|K/K'|=86016$.  Consequently Problem 6.7 of \cite{navarro-problems} has
 a negative answer, and the head characters of $\Gamma$ in the sense of
 \cite{isaacs-carter} are not its Carter-nonvanishing characters.
-\end{corollary}
+\end{lettercorollary}
 
 Nor is the failure a near miss: passing to direct powers drives the
 ratio to zero.
 
-\begin{corollary}\label{cor:powers}
+\begin{lettercorollary}\label{cor:powers}
 For every $\varepsilon>0$ there is a coprime action of a finite group
 $A$ on a finite group $G$ with $C=C_G(A)$ abelian and
 \[
  \frac{|N_A(G)|}{|C/C'|}<\varepsilon .
 \]
-\end{corollary}
+\end{lettercorollary}
 
-\subsection*{The shape of the argument}
+\subsection*{Strategy of the proof}
 
-The counterexample itself is short, and we isolate it in
-Section~\ref{sec:short} so that it can be checked by hand.  Three facts
-do all the work, for $A$ of odd order acting without nonzero
-fixed points on $V$ and $G=B\rtimes V$ as above.
+To prove Theorem~\ref{thm:main} we isolate the counterexample, which is
+short, in Section~\ref{sec:short}, where every step can be checked by
+hand.  Three facts do all the work, for $A$ of odd order acting without
+nonzero fixed points on $V$ and $G=B\rtimes V$ as above.
 
 First, $C=C_G(A)=B^A$ is elementary abelian of rank the number of
 $A$-orbits on $V$ (Proposition~\ref{prop:fixed-subgroup}); in particular
@@ -461,7 +466,7 @@ character formula gives
 \[
  \chi_u(c)=\sum_x\widetilde\lambda_u\bigl(x^{-1}(c,0)x\bigr),
 \]
-with $x$ running over representatives of $G/I_u$; take $x=(0,t)$ for
+the sum over representatives $x$ of $G/I_u$; take $x=(0,t)$ for
 $t\in V/V_u$.
 Conjugation gives $(0,t)^{-1}(c,0)(0,t)=(\tau_tc,0)$, and
 $\langle u,\tau_tc\rangle=\langle\tau_tu,c\rangle$.  The summand is
@@ -1815,7 +1820,7 @@ $|\Irr_A(G)|=|C/C'|$, and that
 $\chi_{\delta_0}(c)=|V|-2|\supp c|$ at every $A$-stable $c$, which is
 Lemma~\ref{lem:delta-values}, the identity producing the zero.  It also
 confirms that $K=C\times A$ is a Carter subgroup of $\Gamma$, as
-Proposition~\ref{prop:carter} asserts.  Two runs are worth singling out.
+Proposition~\ref{prop:carter} asserts.  We single out two further runs.
 Dropping $C_V(A)=0$ admits a balanced $V$ of dimension $3$, where GAP
 displays vanishing invariant characters outright: there $|G|=2048$, $C$
 is nonabelian of order $32$, and $|\Irr_A(G)|=|\Irr(C)|=14$ while
@@ -1839,12 +1844,12 @@ arguments and takes responsibility for the contents of the paper.
 \begin{thebibliography}{9}
 
 \bibitem{clifford}
-A. H. Clifford,
+A.~H.~Clifford,
 \emph{Representations induced in an invariant subgroup},
 Ann. of Math. (2) \textbf{38} (1937), 533--550.
 
 \bibitem{feit-thompson}
-W. Feit and J. G. Thompson,
+W.~Feit and J.~G.~Thompson,
 \emph{Solvability of groups of odd order},
 Pacific J. Math. \textbf{13} (1963), 775--1029.
 
@@ -1854,45 +1859,45 @@ The GAP Group,
 \url{https://www.gap-system.org}.
 
 \bibitem{glauberman}
-G. Glauberman,
+G.~Glauberman,
 \emph{Correspondences of characters for relatively prime operator
 groups},
 Canad. J. Math. \textbf{20} (1968), 1465--1488.
 
 \bibitem{isaacs1973}
-I. M. Isaacs,
+I.~M.~Isaacs,
 \emph{Characters of solvable and symplectic groups},
 Amer. J. Math. \textbf{95} (1973), 594--635.
 
 \bibitem{isaacs-book}
-I. M. Isaacs,
+I.~M.~Isaacs,
 \emph{Character Theory of Finite Groups},
 Academic Press, New York, 1976.
 
 \bibitem{isaacs-carter}
-I. M. Isaacs,
+I.~M.~Isaacs,
 \emph{Carter subgroups, characters and composition series},
 Trans. Amer. Math. Soc. Ser. B \textbf{9} (2022), 470--498.
 
 \bibitem{isaacs-navarro-wolf}
-I. M. Isaacs, G. Navarro and T. R. Wolf,
+I.~M.~Isaacs, G.~Navarro and T.~R.~Wolf,
 \emph{Finite group elements where no irreducible character vanishes},
 J. Algebra \textbf{222} (1999), no.~2, 413--423.
 
 \bibitem{kourovka}
-E. I. Khukhro and V. D. Mazurov (eds.),
+E.~I.~Khukhro and V.~D.~Mazurov (eds.),
 \emph{Unsolved Problems in Group Theory: The Kourovka Notebook},
 No.~21, Sobolev Institute of Mathematics, Novosibirsk, 2026,
 Problem~21.100, p.~178; arXiv:1401.0300v45.
 
 \bibitem{navarro-book}
-G. Navarro,
+G.~Navarro,
 \emph{Character Theory and the McKay Conjecture},
 Cambridge Studies in Advanced Mathematics 175,
 Cambridge University Press, Cambridge, 2018.
 
 \bibitem{navarro-problems}
-G. Navarro,
+G.~Navarro,
 \emph{Problems on characters: solvable groups},
 Publ. Mat. \textbf{67} (2023), 173--198,
 Problem~6.3, p.~189.
