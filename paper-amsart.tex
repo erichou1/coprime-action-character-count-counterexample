@@ -48,14 +48,13 @@ problem list, and with it the corresponding statement about the head
 characters of Isaacs; passing to $G\rtimes A$ refutes Problem 6.7, a
 conjecture Isaacs reports is supported by abundant computational
 evidence.  The construction needs only that $V$ have an $A$-stable
-subset of half its size, which holds for infinitely many pairs $(A,V)$
-and, as we show, for none below dimension $7$ --- so the example is
-minimal over all operator groups of odd order.  Exact machine
-verifications, independent of the proofs, accompany the paper.
+subset of half its size.  This holds for infinitely many pairs $(A,V)$,
+and for none of dimension below $7$, so the example is minimal over all
+operator groups of odd order.  Exact machine verifications, independent
+of the proofs, accompany the paper.
 \end{abstract}
 
 \maketitle
-
 
 \section{Introduction}
 
@@ -69,9 +68,13 @@ Now let $A$ act on $G$ by automorphisms with $(|A|,|G|)=1$, and let
  C=C_G(A)
 \]
 be the fixed-point subgroup.  Write
-$\Irr_A(G)=\{\chi\in\Irr(G):\chi^a=\chi\text{ for all }a\in A\}$
+\[
+ \Irr_A(G)=\{\chi\in\Irr(G):\chi^a=\chi\text{ for all }a\in A\}
+\]
 for the set of $A$-invariant irreducible characters of $G$, and
-$N_A(G)=\{\chi\in\Irr_A(G):\chi(c)\neq0\text{ for all }c\in C\}$
+\[
+ N_A(G)=\{\chi\in\Irr_A(G):\chi(c)\neq0\text{ for all }c\in C\}
+\]
 for those whose restriction to $C$ is nonvanishing.  Taking $A=1$ gives
 $C=G$ and $\Irr_A(G)=\Irr(G)$, so Burnside's theorem says
 $|N_1(G)|=|G/G'|$.  The following problem asks whether this persists
@@ -87,13 +90,13 @@ could show that $\chi_C$ is never zero if and only if the
 Glauberman--Isaacs correspondent $\chi^*$ of $\chi$ is linear.
 \end{problem}
 
-The question is natural: by the Glauberman correspondence
-\cite{glauberman} for solvable $A$, and its extension by Isaacs
-\cite{isaacs1973} in general, there is a canonical bijection
-$\Irr_A(G)\to\Irr(C)$, $\chi\mapsto\chi^*$; see also
-\cite[Chapter 2]{navarro-book}.  So the count $|C/C'|$ asked for is the
-number of \emph{linear} characters of $C$, and the proposed criterion
-would identify $N_A(G)$ with the preimage of those under the
+Behind the question stands a canonical bijection
+$\Irr_A(G)\to\Irr(C)$, $\chi\mapsto\chi^*$, given by the Glauberman
+correspondence \cite{glauberman} for solvable $A$ and by its extension
+due to Isaacs \cite{isaacs1973} in general; see also
+\cite[Chapter 2]{navarro-book}.  The count $|C/C'|$ asked for is thus
+the number of \emph{linear} characters of $C$, and the proposed
+criterion would identify $N_A(G)$ with their preimage under the
 correspondence.  We show that no such identification is possible.
 
 \begin{theorem}\label{thm:main}
@@ -242,9 +245,18 @@ Let
  B=\{f:V\to\F_2\}
 \]
 be the additive group of Boolean functions on $V$, so
-$B\cong C_2^{|V|}$; for $t\in V$ let $\tau_t\in\operatorname{Aut}(B)$
-be translation, $(\tau_tf)(x)=f(x+t)$.  Form the semidirect product
-$G=B\rtimes V$ with $(f,t)(g,s)=(f+\tau_tg,\,t+s)$, of order $2^{|V|}\cdot|V|$.  Since $|A|$ is odd, $A$ acts coprimely
+$B\cong C_2^{|V|}$.  For $t\in V$ let $\tau_t\in\operatorname{Aut}(B)$
+be translation,
+\[
+ (\tau_tf)(x)=f(x+t),
+\]
+and form the semidirect product
+\[
+ G=B\rtimes V,
+ \qquad
+ (f,t)(g,s)=(f+\tau_tg,\,t+s),
+\]
+of order $2^{|V|}\cdot|V|$.  Since $|A|$ is odd, $A$ acts coprimely
 on $G$ once we check that it acts at all:
 
 \begin{lemma}\label{lem:action}
@@ -287,15 +299,27 @@ $B^A$.  Being elementary abelian, $C$ has $C'=1$.
 
 \subsection{The irreducible characters of \texorpdfstring{$G$}{G}}
 
-For $u,f\in B$ put $\langle u,f\rangle=\sum_{x\in V}u(x)f(x)\in\F_2$
-and $\lambda_u(f)=(-1)^{\langle u,f\rangle}$.  The pairing is nondegenerate, so $u\mapsto\lambda_u$ is an isomorphism
+For $u,f\in B$ put
+\[
+ \langle u,f\rangle=\sum_{x\in V}u(x)f(x)\in\F_2,
+ \qquad
+ \lambda_u(f)=(-1)^{\langle u,f\rangle} .
+\]
+The pairing is nondegenerate, so $u\mapsto\lambda_u$ is an isomorphism
 $B\to\Irr(B)$.  Conjugation by $(0,t)$ sends $(f,0)$ to $(\tau_tf,0)$,
 and since $\langle u,\tau_tf\rangle=\langle\tau_tu,f\rangle$ we get
 $\lambda_u^{(0,t)}=\lambda_{\tau_tu}$.  Thus $V$ permutes $\Irr(B)$ the
-same way it permutes $B$, and the stabilizer of $\lambda_u$ is $B\rtimes V_u$, where
-$V_u=\{t\in V:\tau_tu=u\}$.  Write $I_u=B\rtimes V_u$; it is normal in $G$, being the preimage of
+same way it permutes $B$, and the stabilizer of $\lambda_u$ is
+$B\rtimes V_u$ where
+\[
+ V_u=\{t\in V:\tau_tu=u\} .
+\]
+Write $I_u=B\rtimes V_u$; it is normal in $G$, being the preimage of
 $V_u\le V$ under $G\to G/B\cong V$.  For $\mu\in\Irr(V_u)$ the formula
-$\theta_{u,\mu}(f,t)=\lambda_u(f)\mu(t)$ defines a linear character of $I_u$, because $\tau_tu=u$ for $t\in
+\[
+ \theta_{u,\mu}(f,t)=\lambda_u(f)\mu(t)
+\]
+defines a linear character of $I_u$, because $\tau_tu=u$ for $t\in
 V_u$.  Put $\chi_{u,\mu}=\Ind_{I_u}^G\theta_{u,\mu}$.
 
 \begin{proposition}\label{prop:all-irr}
@@ -357,14 +381,20 @@ $X^A\subseteq V^A=0$.
 Next, the map $a\mapsto z_a+V_u$ is a $1$-cocycle: applying
 Lemma~\ref{lem:action} twice,
 $\tau_{z_{ab}}u=(ab)\cdot u=a\cdot(\tau_{z_b}u)=\tau_{a\cdot z_b+z_a}u$,
-so $z_{ab}\equiv a\cdot z_b+z_a \pmod{V_u}$.  Put $w=\sum_{b\in A}z_b$.  Summing the cocycle identity over $b\in A$ and reindexing the left side
+so $z_{ab}\equiv a\cdot z_b+z_a \pmod{V_u}$.  Put
+\[
+ w=\sum_{b\in A}z_b .
+\]
+Summing the cocycle identity over $b\in A$ and reindexing the left side
 gives $w\equiv a\cdot w+|A|z_a\pmod{V_u}$, and $|A|=1$ in $\F_2$ because
 $|A|$ is odd, so
 \[
  z_a\equiv a\cdot w+w\pmod{V_u}\qquad\text{for every }a\in A .
 \]
-Therefore $a\cdot w+z_a\equiv w\pmod{V_u}$, so
-$a\cdot(\tau_wu)=\tau_{a\cdot w}(a\cdot u)=\tau_{a\cdot w+z_a}u=\tau_wu$
+Therefore $a\cdot w+z_a\equiv w\pmod{V_u}$, and
+\[
+ a\cdot(\tau_wu)=\tau_{a\cdot w}(a\cdot u)=\tau_{a\cdot w+z_a}u=\tau_wu
+\]
 for every $a$, so $\tau_wu\in B^A$.  Finally, if $u$ and $\tau_tu$ both
 lie in $B^A$ then $t+V_u\in(V/V_u)^A=0$, so $t\in V_u$ and
 $\tau_tu=u$.
@@ -372,7 +402,10 @@ $\tau_tu=u$.
 
 \begin{proposition}\label{prop:invariant-irr}
 For $u\in B^A$ let $\widetilde\lambda_u(f,t)=\lambda_u(f)$ and
-$\chi_u=\Ind_{I_u}^G\widetilde\lambda_u$.  Then $u\mapsto\chi_u$ is a bijection from $B^A$ onto $\Irr_A(G)$.  In
+\[
+ \chi_u=\Ind_{I_u}^G\widetilde\lambda_u .
+\]
+Then $u\mapsto\chi_u$ is a bijection from $B^A$ onto $\Irr_A(G)$.  In
 particular
 \[
  |\Irr_A(G)|=|B^A|=|C/C'| .
@@ -481,7 +514,11 @@ sufficient.
 \begin{lemma}\label{lem:delta-values}
 Let $u=\delta_0\in B^A$ be the indicator function of $0\in V$.  Then
 $V_u=0$, so $\chi_u=\Ind_B^G\lambda_u\in\Irr_A(G)$ has degree $|V|$,
-and $\chi_u(c)=|V|-2\,|\supp c|$ for every $c\in B^A$.  Hence $\chi_u(c)=0$ if and only if $|\supp c|=|V|/2$.
+and for every $c\in B^A$
+\[
+ \chi_u(c)=|V|-2\,|\supp c| .
+\]
+Hence $\chi_u(c)=0$ if and only if $|\supp c|=|V|/2$.
 \end{lemma}
 
 \begin{proof}
@@ -664,7 +701,7 @@ target is $2^{n-1}$.
 \begin{center}
 \begin{tabular}{@{}cccll@{}}
 \toprule
-$n$ & $m$ & $\{d_j\}$ & orbit sizes & why the target is missed\\
+$n$ & $m$ & $\{d_j\}$ & Orbit sizes & Why the target is missed\\
 \midrule
 $4$ & $15$ & $\{15\}$ & $1,15$ & parts $\le8$ total $1<8$\\
 $5$ & $21$ & $\{3,7\}$ & $1,3,7,21$ & parts $\le16$ total $11<16$\\
@@ -898,10 +935,17 @@ they start.
 
 \section{The counterexample}\label{sec:short}
 
-We can now fix the example and prove the inequality.  Let $U=\F_4^2$, $W=\F_8$ and $V=U\oplus W$, an $\F_2$-space of dimension $7$, so $|V|=128$.  Choose
-$\omega\in\F_4^\times$ of order $3$ and $\zeta\in\F_8^\times$ of order $7$, and let
-$T(x_1,x_2,y)=(\omega x_1,\omega x_2,\zeta y)$, an $\F_2$-linear map
-of order $21$.  Let $A=\langle a\rangle\cong C_{21}$
+We can now fix the example and prove the inequality.  Let
+\[
+ U=\F_4^2,\qquad W=\F_8,\qquad V=U\oplus W,
+\]
+an $\F_2$-space of dimension $7$, so $|V|=128$.  Choose
+$\omega\in\F_4^\times$ of order $3$ and $\zeta\in\F_8^\times$ of order
+$7$, and let
+\[
+ T(x_1,x_2,y)=(\omega x_1,\omega x_2,\zeta y),
+\]
+an $\F_2$-linear map of order $21$.  Let $A=\langle a\rangle\cong C_{21}$
 act on $V$ with $a$ acting as $T$.  Since $\omega\neq1$ and
 $\zeta\neq1$ we have $C_V(A)=C_V(T)=0$, so~\eqref{eq:no-fixed-V} holds,
 and $A$ acts as in Lemma~\ref{lem:action} on
@@ -920,7 +964,7 @@ as this labeling is used throughout:
 \begin{center}
 \begin{tabular}{@{}llll@{}}
 \toprule
-orbit & size & coordinate & description\\
+Orbit & Size & Coordinate & Description\\
 \midrule
 $\{0\}$ & $1$ & $x_0$ & the zero vector\\
 $L_i^\times\times\{0\}$, $1\le i\le5$ & $3$ & $x_i$
@@ -1115,7 +1159,12 @@ so that Lemma~\ref{lem:value-formula} becomes
 
 \subsection*{The exact zero criterion}\label{sec:criterion}
 
-Let $\delta=(1,0,0,0,0,0)$ and $J=(1,1,1,1,1,1)$, and for $R\subseteq\{1,\dots,5\}$ let $\rho_R=(0,\one_R)$ with
+Let
+\[
+ \delta=(1,0,0,0,0,0),\qquad
+ J=(1,1,1,1,1,1),
+\]
+and for $R\subseteq\{1,\dots,5\}$ let $\rho_R=(0,\one_R)$ with
 $\one_R$ the indicator vector of $R$.
 
 \begin{lemma}[Zero patterns]\label{lem:zero-patterns}
@@ -1190,7 +1239,11 @@ map of the radial subspace.
 
 \begin{proposition}[Complete zero criterion]\label{prop:zero-criterion}
 Let $u=(X,Y)\in B^A$, put $P=X+Y=(p_0,p)$ and $Y=(y_0,y)$, and when
-$\tau(P)=0$ set $r=p+p_0\one$.  Then $\chi_u$ vanishes at some element of $C$ if and only if one of the
+$\tau(P)=0$ set
+\[
+ r=p+p_0\one .
+\]
+Then $\chi_u$ vanishes at some element of $C$ if and only if one of the
 following holds:
 \begin{enumerate}[label=\textup{(\roman*)}]
 \item $\tau(P)=1$;
@@ -1261,7 +1314,10 @@ $r\cdot y=r\cdot q$, which with~\eqref{eq:Q-critical} gives
 $r\cdot y=1+p_0$.
 
 Conversely, assume $\tau(Y)=1$ and $r\cdot y=1+p_0$, and set
-$q=y+(1+y_0)\one$ and $q_0=1$.  From $\sum_iy_i=1+y_0$ we get $\sigma=\sum_iq_i=0$, hence
+\[
+ q=y+(1+y_0)\one,\qquad q_0=1 .
+\]
+From $\sum_iy_i=1+y_0$ we get $\sigma=\sum_iq_i=0$, hence
 $\tau(Q)=1$; and $r\cdot q=r\cdot y=1+p_0$ because $r\cdot\one=0$.  So
 \eqref{eq:Q-critical} holds, and the left side of
 \eqref{eq:critical-affine} is $y+y+(1+y_0)\one+(1+y_0)\one=0$.  Hence a
@@ -1351,6 +1407,37 @@ $N_A(G)$.  Hence
 and $|A|=21$ remains coprime to $|G^n|=2^{135n}$.
 \end{proof}
 
+\subsection*{Head characters}
+
+The same question is raised, and the same
+correspondence studied, by Isaacs \cite{isaacs-carter}.  For $G$
+solvable and $A$ acting coprimely, Isaacs calls $\chi\in\Irr_A(G)$ an
+\emph{$A$-head character} if $\chi$ is the head character of some strong
+$A$-pair series, a condition formulated purely in terms of
+$A$-composition series of $G$, and proves in
+\cite[Theorem 7.1]{isaacs-carter} that the $A$-head characters of $G$
+are exactly the $\chi\in\Irr_A(G)$ whose Glauberman--Isaacs
+correspondent is linear.  He closes \cite[\S7]{isaacs-carter} by
+recording Navarro's question in the form of Problem 6.3.  Combining his
+theorem with the exact count of Section~\ref{sec:count} answers it in
+his own terms.
+
+\begin{corollary}\label{cor:head}
+Let $A$, $G$, $C$ be as in Theorem~\ref{thm:main}.  Then $G$ is
+solvable, all $4096$ characters in $\Irr_A(G)$ are $A$-head characters
+of $G$, and exactly $1728$ of them are nonvanishing on $C$.  In
+particular the $A$-head characters of $G$ are not the $A$-invariant
+irreducible characters that are nonvanishing on $C$.
+\end{corollary}
+
+\begin{proof}
+$G$ is a $2$-group, hence solvable, and $|A|=21$ is coprime to $|G|$, so
+\cite[Theorem 7.1]{isaacs-carter} applies.  By
+Theorem~\ref{thm:counterexample}, $C$ is abelian, so $\chi^*(1)=1$ for
+every $\chi\in\Irr_A(G)$, and all $4096$ of them are $A$-head characters.
+The exact count of Section~\ref{sec:count} gives $|N_A(G)|=1728$.
+\end{proof}
+
 Several natural questions remain.
 
 \emph{Minimality.} Our $G$ has order $2^{135}$.  Within the family of
@@ -1405,7 +1492,7 @@ correspondent number $|(C\times Q)/(C\times Q)'|=4096|Q/Q'|$, which
 differs from $1728|Q/Q'|$.
 \end{proof}
 
-Note that this still refutes Problem 6.3 in the direction
+This still refutes Problem 6.3 in the direction
 ``$\chi^*$ linear $\Rightarrow$ $\chi_C$ nonvanishing''.  The opposite
 direction, which for $A=1$ is exactly Burnside's theorem, is untouched
 by our examples, and we do not know whether it can fail.
@@ -1444,8 +1531,12 @@ hence $N_\Gamma(A)=C_G(A)A=K$, and $K$ is self-normalizing.
 \end{proof}
 
 We now compute the characters of $\Gamma$ that are nonvanishing on $K$.
-Write $\Gamma=B\rtimes(V\rtimes A)$ and, for $a\in A$ acting on $V$ as $T^k$, put
-$S_k=\{t\in V:(T^k+1)t\in V_u\}$, a $T$-invariant subgroup of $V$ containing $V_u$.
+Write $\Gamma=B\rtimes(V\rtimes A)$ and, for $a\in A$ acting on $V$ as
+$T^k$, put
+\[
+ S_k=\{t\in V:(T^k+1)t\in V_u\},
+\]
+a $T$-invariant subgroup of $V$ containing $V_u$.
 
 \begin{lemma}\label{lem:gamma-values}
 Let $u\in B^A$ and $\theta=\chi_u$.  Then $\theta$ extends to $\Gamma$,
@@ -1480,7 +1571,10 @@ irreducible characters over $\theta$, and these are all of them.
 
 Take $x_t=(0,(t,1))$ for $t\in V/V_u$ as a transversal of
 $\Gamma/(B\rtimes W_u)$.  A direct computation gives
-$x_t^{-1}(c,(0,a))x_t=\bigl(\tau_tc,((1+T^k)t,a)\bigr)$, which lies in $B\rtimes W_u$ exactly when $(1+T^k)t\in V_u$, that is,
+\[
+ x_t^{-1}(c,(0,a))x_t=\bigl(\tau_tc,((1+T^k)t,a)\bigr),
+\]
+which lies in $B\rtimes W_u$ exactly when $(1+T^k)t\in V_u$, that is,
 when $t\in S_k$.  For such $t$ the value of $\eta_\psi$ is
 $\lambda_u(\tau_tc)\psi(a)=(-1)^{\langle\tau_tu,c\rangle}\psi(a)$, and
 the induced-character formula gives the stated sum.
@@ -1579,9 +1673,8 @@ Carter-nonvanishing characters.
 \begin{remark}
 The ratio is again $36288/86016=27/64$, and by
 Corollary~\ref{cor:powers} the same construction applied to $G^n$ makes
-it $(27/64)^n$.  Note also that $|\Gamma|=2^{135}\cdot21$, which is why
-the computer searches reported in \cite[\S6]{isaacs-carter} would not
-have found this.
+it $(27/64)^n$.  Since $|\Gamma|=2^{135}\cdot21$, the computer searches
+reported in \cite[\S6]{isaacs-carter} could not have found it.
 \end{remark}
 
 As with Theorem~\ref{thm:general}, the counterexample does not depend on
@@ -1641,38 +1734,8 @@ general principle: for a distinguished subgroup $H\le G$ and a natural
 bijection ${}^*$ from a canonical subset of $\Irr(G)$ onto one of
 $\Irr(H)$, one expects $\chi^*$ to be linear exactly when $\chi_H$ is
 never zero \cite[p.~189]{navarro-problems}.  Corollary~\ref{cor:criterion}
-refutes that principle for the Glauberman--Isaacs correspondence.  It is
-worth being precise about how far the refutation reaches, since several
-neighboring statements survive it untouched.
-
-\emph{Head characters.}  The same question is raised, and the same
-correspondence studied, by Isaacs \cite{isaacs-carter}.  For $G$
-solvable and $A$ acting coprimely, Isaacs calls $\chi\in\Irr_A(G)$ an
-\emph{$A$-head character} if $\chi$ is the head character of some strong
-$A$-pair series, a condition formulated purely in terms of
-$A$-composition series of $G$, and proves in
-\cite[Theorem 7.1]{isaacs-carter} that the $A$-head characters of $G$
-are exactly the $\chi\in\Irr_A(G)$ whose Glauberman--Isaacs
-correspondent is linear.  He closes \cite[\S7]{isaacs-carter} by
-recording Navarro's question in the form of Problem 6.3.  Combining his
-theorem with the exact count of Section~\ref{sec:count} answers it in
-his own terms.
-
-\begin{corollary}\label{cor:head}
-Let $A$, $G$, $C$ be as in Theorem~\ref{thm:main}.  Then $G$ is
-solvable, all $4096$ characters in $\Irr_A(G)$ are $A$-head characters
-of $G$, and exactly $1728$ of them are nonvanishing on $C$.  In
-particular the $A$-head characters of $G$ are not the $A$-invariant
-irreducible characters that are nonvanishing on $C$.
-\end{corollary}
-
-\begin{proof}
-$G$ is a $2$-group, hence solvable, and $|A|=21$ is coprime to $|G|$, so
-\cite[Theorem 7.1]{isaacs-carter} applies.  By
-Theorem~\ref{thm:counterexample}, $C$ is abelian, so $\chi^*(1)=1$ for
-every $\chi\in\Irr_A(G)$, and all $4096$ of them are $A$-head characters.
-The exact count of Section~\ref{sec:count} gives $|N_A(G)|=1728$.
-\end{proof}
+refutes that principle for the Glauberman--Isaacs correspondence.  Its
+reach is limited, and we record the limits.
 
 \emph{The hypothesis that $A$ be a $p$-group cannot be dropped.}
 Both Navarro \cite[p.~189]{navarro-problems} and Isaacs
@@ -1685,36 +1748,23 @@ $C$.  So that observation becomes false the moment $A$ is allowed two
 prime divisors, and the restriction to $p$-groups in it is essential
 rather than an artifact of the proof.
 
-\emph{Problem 6.1 holds for $\Gamma$.}  Problem 6.1 asks whether a
-$\chi\in\Irr(\Gamma)$ that is nonvanishing on $N_\Gamma(P)$, for
-$P\in\operatorname{Syl}_p(\Gamma)$, must have degree prime to $p$.  For
-$\Gamma=G\rtimes A$ of Section~\ref{sec:carter} this is true, for every
-$p$.  If $p=2$ then $P=G$ and $N_\Gamma(G)=\Gamma$, so $\chi$ is
-nonvanishing and hence linear by Burnside.  If $p\in\{3,7\}$ then $P\le
-A$ and $N_\Gamma(P)=C_G(P)A\supseteq A$; arguing as in
-Theorem~\ref{thm:carter}, a $\chi$ lying over a non-$A$-invariant
-$\theta$ vanishes at some $a\in A\subseteq N_\Gamma(P)$, so $\chi$ lies
-over an $A$-invariant $\theta$ and $\chi(1)=\theta(1)$ is a power of
-$2$, prime to $p$.  So the example does not bear on Problem 6.1 either.
-
-\emph{Problem 6.5 and Theorem 6.6 of \cite{navarro-problems} are not
-affected.}  Navarro proves there that if Problem 6.3 has an affirmative
-answer \emph{whenever $A$ is a $p$-group}, then Problem 6.5(b) --- the
-case of a group with a normal $p$-complement --- has an affirmative
-answer.  That implication takes as its hypothesis only the $p$-group
-case of Problem 6.3, which our example does not touch.  Both the
-implication and Problem 6.5 therefore remain open, and by the previous
-paragraph the $p$-group case is now the only case of Problem 6.3 that
-could serve as its hypothesis.
-
-\emph{Section 5 of \cite{navarro-problems} is not affected.}  Those
-problems concern the elements of a $p$-solvable group on which the
-characters of degree prime to $p$ do not vanish, in the tradition of
-\cite{isaacs-navarro-wolf}.  For our $G$, a $2$-group, they are vacuous
-or trivial: at $p=2$ the characters of odd degree are exactly the linear
-ones, which never vanish, and every element is a $2$-element, so
-Problem 5.1 holds trivially; at an odd prime $p$ we have
-$\mathbf O_{p'}(G)=G$, so its hypothesis fails.
+Three neighboring statements are untouched, for reasons worth stating
+briefly.  Problem 6.1 asks whether a $\chi\in\Irr(\Gamma)$ nonvanishing
+on $N_\Gamma(P)$, for $P\in\operatorname{Syl}_p(\Gamma)$, must have
+degree prime to $p$; for the $\Gamma$ of Section~\ref{sec:carter} it
+holds at every $p$, since at $p=2$ we have $N_\Gamma(G)=\Gamma$ and
+Burnside applies, while at $p\in\{3,7\}$ the argument of
+Theorem~\ref{thm:carter} forces $\chi$ to lie over an $A$-invariant
+$\theta$, whence $\chi(1)=\theta(1)$ is a power of $2$.  Problem 6.5
+and Theorem 6.6 of \cite{navarro-problems} take as hypothesis only the
+$p$-group case of Problem 6.3, which our example does not touch, so
+both remain open --- and by the previous paragraph that case is now the
+only one available to them.  Finally the problems of
+\cite[\S5]{navarro-problems}, on elements where the characters of
+degree prime to $p$ do not vanish, are vacuous or trivial for a
+$2$-group: at $p=2$ the odd-degree characters are the linear ones and
+every element is a $2$-element, and at odd $p$ we have
+$\mathbf O_{p'}(G)=G$.
 
 What the example does establish, beyond the two counts of
 Theorem~\ref{thm:main}, is that nonvanishing on $C$ is not determined by
@@ -1729,88 +1779,52 @@ differently from ours.
 
 \subsection*{Verification}\label{sec:verification}
 
-The proof above is self-contained; the computations described here are
-independent checks and are not used anywhere in it.  Four exact
-programs, in integer and $\F_2$ arithmetic with no floating point, are
+The proofs above are self-contained; the computations described here are
+independent checks and are used nowhere in them.  All of them are exact,
+in integer and $\F_2$ arithmetic with no floating point, and are
 available at
 \begin{center}
 \url{https://github.com/erichou1/coprime-action-zero-free-characters}
 \end{center}
 
-Three of them compute $|N_A(G)|$ independently: a full $128$-point
-integer Walsh transform, which for each of the $4096$ functions
-$u\in B^A$ computes
-$\sum_{t\in V}(-1)^{\langle\tau_tu,c\rangle}$ for all $4096$ values of
-$c$ simultaneously; a direct computation in $\F_4^2\oplus\F_8$ using
-the radial correlation table of Section~\ref{sec:radial}; and a binary
-linear-algebra test based on the twenty zero patterns of
-Lemma~\ref{lem:zero-patterns}.  All three return $1728$ zero-free
-characters and $2368$ characters with a zero.  The fourth evaluates the
-characters of $\Gamma=G\rtimes A$ on the Carter subgroup $K$ using
-Lemma~\ref{lem:gamma-values} and returns the count $36288$ of
-Theorem~\ref{thm:carter}; as a check on the transversal formula it
-also verifies that $\langle\chi_K,\chi_K\rangle$ is a positive
-integer for every character tested.
+Three programs compute $|N_A(G)|$ by different routes --- a $128$-point
+integer Walsh transform, a direct computation in $\F_4^2\oplus\F_8$ from
+the radial correlation table, and a binary linear-algebra test built on
+the twenty zero patterns of Lemma~\ref{lem:zero-patterns} --- and all
+three return $1728$.  A fourth evaluates the characters of $\Gamma$ on
+$K$ by Lemma~\ref{lem:gamma-values} and returns the $36288$ of
+Theorem~\ref{thm:carter}.  Further scripts reproduce the design
+enumeration of Section~\ref{sec:design}, the support-sum criterion of
+Theorem~\ref{thm:dim-six}, and the subgroup search behind
+Proposition~\ref{prop:noncyclic}; an accompanying test suite checks the
+orbit sizes, the correlation identity~\eqref{eq:correlation}, the twenty
+zero patterns, and the vanishing of Theorem~\ref{thm:counterexample}.
 
-The accompanying tests also confirm the orbit sizes
-$1,3,3,3,3,3,7,21,21,21,21,21$ of Proposition~\ref{prop:minimal}, the
-correlation identity~\eqref{eq:correlation}, the twenty zero patterns,
-and the vanishing $\chi(c)=0$ of Theorem~\ref{thm:counterexample}.  The
-enumeration reported in Remark~\ref{rem:search} is also included, as are
-two checks on Section~\ref{sec:design}.  First, the support-sum
-criterion of Theorem~\ref{thm:dim-six} is verified to be unsatisfiable
-for every partition and $d$-vector with $n\le6$, and satisfiable at
-$n=7$ exactly for the shapes including the example's.  Second, a direct
-enumeration of odd-order subgroups of the relevant products of groups
-$\Gamma L(m,2^e)$ independently confirms that no balanced pair with
-$C_V(A)=0$ exists in dimension at most $5$; it is pruned by the
-observations that balance passes to subgroups and that $C_V(A)=0$
-passes to overgroups.
+Since $|G|=2^{135}$, the group cannot be constructed in a computer
+algebra system, and nothing above requires it: every computation runs on
+$V$, with $128$ points and $12$ orbits, on $B^A$, with $4096$ elements,
+or on multisets of divisors and small matrix groups over $\F_2$.
 
-Note the scale involved: $|G|=2^{135}$, so $G$ cannot be constructed in
-a computer algebra system.  Nothing above requires it.  The character
-computations take place either on the $7$-dimensional space $V$, with
-$128$ points and $12$ orbits, or on the $12$-dimensional space $B^A$,
-with $4096$ elements; the design searches of Section~\ref{sec:design}
-run on multisets of divisors and on matrix groups over $\F_2$ of
-dimension at most $5$.
-
-A separate script \texttt{verification/verify.g} carries out an
-independent check in GAP \cite{gap}, using that system's own character
-theory rather than any formula proved here.  Since $|G|=2^{135}$ cannot
-be built, it verifies instead the two ingredients the counterexample is
-assembled from.  First, the arithmetic of Section~\ref{sec:design} at
-$\dim V=7$: the orbit sizes, $C_V(A)=0$, the identity
-$1+21+21+21=64$, and the count of twenty $A$-stable halves of $V$.
-Second, the structural statements of Section~\ref{sec:family} in the
-same family $G=C_2\wr V$, for $\dim V=2$ and $3$, where $|G|=2^6$ and
-$2^{11}$: GAP confirms $C_G(A)=B^A$ elementary abelian of the predicted
-rank, $|\Irr_A(G)|=|C/C'|$, that $\Ind_B^G\lambda_{\delta_0}$ is
-irreducible of degree $|V|$, and Lemma~\ref{lem:delta-values} --- the
-identity $\chi_{\delta_0}(c)=|V|-2|\supp c|$ that produces the zero ---
-at every $A$-stable $c$.  It also confirms $|N_A(G)|=|C/C'|$ there, as
-Corollary~\ref{cor:balance} predicts for these unbalanced $V$.
-
-The script then checks Proposition~\ref{prop:carter} in the same small
-cases: GAP confirms that $K=C\times A$ is nilpotent and
-self-normalizing in $\Gamma=G\rtimes A$, hence a Carter subgroup, and
-that the number of irreducible characters of $\Gamma$ nowhere zero on
-$K$ equals $|K/K'|$ there, as Theorem~\ref{thm:carter-general}
-predicts for unbalanced $V$.
-
-Two further runs are worth recording.  First, dropping $C_V(A)=0$
-allows a balanced $V$ of dimension $3$, so GAP can display vanishing
-invariant characters outright; there $|G|=2048$, $C$ is nonabelian of
-order $32$, and $|\Irr_A(G)|=|\Irr(C)|=14$ while $|C/C'|=8=|N_A(G)|$.
-Problem 21.100 survives, because the slack between $|C/C'|$ and
-$|\Irr(C)|$ absorbs the zeros.  The fixed-point-free hypothesis is
-precisely what removes that slack, and Theorem~\ref{thm:general} is
-the observation that once it is removed a single zero suffices.
-Second, a search over every group of order at most $63$ and every
-cyclic $A$ of coprime order acting on it --- $968$ pairs $(G,A)$ ---
-finds no counterexample to Problem 21.100 at all.  Both the smallness
-of the search and the size of our example suggest that counterexamples
-are genuinely rare.
+A further script checks the ingredients in GAP \cite{gap}, using that
+system's own character theory rather than any formula proved here.  It
+confirms the arithmetic of Section~\ref{sec:design} at $\dim V=7$, and
+then, in the same family $G=C_2\wr V$ at $\dim V=2$ and $3$, the
+structural statements of Section~\ref{sec:family}: that $C_G(A)=B^A$ is
+elementary abelian of the predicted rank, that
+$|\Irr_A(G)|=|C/C'|$, and that
+$\chi_{\delta_0}(c)=|V|-2|\supp c|$ at every $A$-stable $c$, which is
+Lemma~\ref{lem:delta-values}, the identity producing the zero.  It also
+confirms that $K=C\times A$ is a Carter subgroup of $\Gamma$, as
+Proposition~\ref{prop:carter} asserts.  Two runs are worth singling out.
+Dropping $C_V(A)=0$ admits a balanced $V$ of dimension $3$, where GAP
+displays vanishing invariant characters outright: there $|G|=2048$, $C$
+is nonabelian of order $32$, and $|\Irr_A(G)|=|\Irr(C)|=14$ while
+$|C/C'|=8=|N_A(G)|$, so Problem 21.100 survives because the slack
+between $|C/C'|$ and $|\Irr(C)|$ absorbs the zeros.  Removing that slack
+is exactly what the fixed-point-free hypothesis does.  And a search over
+all $968$ coprime cyclic actions on all groups of order at most $63$
+finds no counterexample to Problem 21.100 anywhere, which places the
+size of ours in context.
 
 \section*{Acknowledgments}
 
