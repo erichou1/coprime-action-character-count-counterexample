@@ -40,48 +40,40 @@ on the fixed-point subgroup}
 \maketitle
 
 \begin{abstract}
-Let a finite group $A$ act coprimely on a finite group $G$ and put
-$C=C_G(A)$.  Navarro asked, in Problem 21.100 of the 21st Kourovka
-Notebook, whether the number of $A$-invariant $\chi\in\Irr(G)$ whose
-restriction $\chi_C$ never vanishes is always $|C/C'|$; this is the
-coprime analogue of Burnside's theorem that the nonvanishing
-irreducible characters of a group are exactly the linear ones.  We
-answer the question negatively.  For a cyclic $A$ of order $21$ acting
-on $G=B\rtimes V$, where $V=\F_4^2\oplus\F_8$ and $B$ is the group of
-Boolean functions on $V$, the fixed subgroup $C\cong C_2^{12}$ is
-abelian and carries all $4096$ invariant characters, yet an explicit
-invariant character of degree $128$ vanishes on an explicit element of
-$C$.  A short self-contained argument gives this, and a refinement
-computes the exact count,
-\[
- |N_A(G)|=1728<4096=|C/C'|.
-\]
-Because $C$ is abelian, the example also refutes the stronger criterion
-proposed with the problem, that $\chi_C$ be nonvanishing precisely when
-the Glauberman--Isaacs correspondent $\chi^*$ is linear.  That criterion
-is Problem 6.3 of Navarro's problem list, which therefore has a negative
-answer, and the counterexample lies in the nilpotent case singled out
-there as the likely source of one.  By a theorem of Isaacs, the
-invariant characters with linear correspondent are exactly his $A$-head
-characters, defined through $A$-composition series; so the example also
-shows that the $A$-head characters of a group are not the invariant
-characters nonvanishing on the fixed-point subgroup, answering a
-question raised at the close of that work.  It shows in addition that
-the hypothesis that the operator group be a $p$-group, in the one
-direction of Problem 6.3 known to hold, cannot be dropped.  Passing to
-$\Gamma=G\rtimes A$, whose Carter subgroup is $C\times A$, we obtain
-a solvable group with exactly $36288$ irreducible characters
-nonvanishing on a Carter subgroup $K$ with $|K/K'|=86016$; this refutes
-a conjecture of Navarro reported by Isaacs, and shows that the head
-characters of a solvable group need not be its Carter-nonvanishing
-characters.  Taking direct powers makes these ratios arbitrarily small.
-Neither counterexample depends on the particular $V$: the construction
-works whenever $V$ has an $A$-stable subset of half its size, which
-happens for infinitely many pairs $(A,V)$ --- and, we show, for none
-with $\dim V\le6$: over all operator groups of odd order, the least
-dimension is $7$, the least operator order is $15$, and the least group
-order in the family is $2^{135}$.  Exact machine verifications,
-independent of the proofs, accompany the paper.
+Let a finite group $A$ act coprimely on a finite group $G$, and put
+$C=C_G(A)$.  Burnside's theorem says that the irreducible characters of
+a group that vanish nowhere are exactly the linear ones.  Navarro asked,
+in Problem 21.100 of the 21st Kourovka Notebook, whether the coprime
+analogue holds: is the number of $A$-invariant $\chi\in\Irr(G)$ with
+$\chi_C$ nowhere zero always $|C/C'|$?  We answer this negatively.
+
+Our example has $A$ cyclic of order $21$ acting on $G=B\rtimes V$, where
+$V=\F_4^2\oplus\F_8$ and $B$ is the group of Boolean functions on $V$.
+Here $C\cong C_2^{12}$ is abelian and carries all $4096$ invariant
+characters, yet an explicit invariant character of degree $128$ vanishes
+at an explicit element of $C$; a refinement gives the exact count
+$|N_A(G)|=1728$.
+
+Three further consequences follow.  Since $C$ is abelian, the example
+refutes the criterion proposed with the problem: that $\chi_C$ be
+nowhere zero exactly when the Glauberman--Isaacs correspondent $\chi^*$
+is linear.  This is Problem 6.3 of Navarro's problem list, and by a
+theorem of Isaacs the example equally refutes the corresponding
+statement about his $A$-head characters, answering a question that
+closes that work.  It
+shows that the $p$-group hypothesis, under which one direction of
+Problem 6.3 is known, cannot be dropped.  Finally, passing to
+$\Gamma=G\rtimes A$, whose Carter subgroup is $K=C\times A$, gives a
+solvable group with $36288$ characters nowhere zero on $K$ against
+$|K/K'|=86016$.  This refutes a conjecture of Navarro that Isaacs
+reports is supported by abundant computational evidence.
+
+None of this depends on the particular $V$: the construction works
+whenever $V$ has an $A$-stable subset of half its size.  Infinitely many
+pairs $(A,V)$ qualify, and none of dimension below $7$ does, so
+$\dim V=7$, $|A|=15$ and $|G|=2^{135}$ are the exact minima over all
+operator groups of odd order.  Exact machine verifications, independent
+of the proofs, accompany the paper.
 \end{abstract}
 
 \section{Introduction}
