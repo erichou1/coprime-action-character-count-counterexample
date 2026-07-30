@@ -5,6 +5,6 @@ type: software
 authors:
   - family-names: Hou
     given-names: Eric
-date-released: 2026-07-29
+date-released: 2026-07-30
 url: "https://github.com/erichou1/coprime-action-zero-free-characters"
 repository-code: "https://github.com/erichou1/coprime-action-zero-free-characters"
