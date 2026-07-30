@@ -98,6 +98,8 @@ this enumeration.
   \(\mathbf F_4^2\oplus\mathbf F_8\).
 - `verification/walsh_transform.py`: full 128-point integer Walsh-transform
   calculation.
+- `verification/verify.g`: an independent check in **GAP**, using GAP's own
+  character theory rather than any formula from the paper (see below).
 - `tests/test_verification.py`: consistency tests for the three counts, the
   correlation identity, the twenty zero patterns, the orbit decomposition,
   the explicit zero witness, the design table, the Carter-subgroup count,
@@ -115,6 +117,22 @@ Note that \(|G|=2^{135}\), so \(G\) cannot be built in a computer algebra
 system — and nothing here needs it. Every computation runs either on the
 7-dimensional space \(V\) (128 points, 12 orbits) or on the 12-dimensional
 space \(B^A\) (4096 elements).
+
+## Independent check in GAP
+
+Since \(|G| = 2^{135}\) cannot be built in any computer algebra system, the
+GAP script checks the two ingredients the counterexample is assembled from:
+the dimension-7 arithmetic (orbit sizes, \(C_V(A)=0\), \(1+21+21+21=64\),
+twenty \(A\)-stable halves), and the structural machinery in the same family
+\(G = C_2 \wr V\) at \(\dim V = 2, 3\) — where GAP confirms
+\(C_G(A)=B^A\), \(|\mathrm{Irr}_A(G)| = |C/C'|\), and the lemma
+\(\chi_{\delta_0}(c) = |V| - 2|\mathrm{supp}\,c|\) that produces the zero.
+It closes with a balanced non-fixed-point-free case (\(|G| = 2048\)) where
+GAP exhibits vanishing invariant characters directly.
+
+```bash
+gap -q -b --nointeract verification/verify.g
+```
 
 ## Reproduce the verification
 

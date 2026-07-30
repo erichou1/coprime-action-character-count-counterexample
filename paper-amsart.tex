@@ -1777,6 +1777,31 @@ with $4096$ elements; the design searches of Section~\ref{sec:design}
 run on multisets of divisors and on matrix groups over $\F_2$ of
 dimension at most $5$.
 
+A separate script \texttt{verification/verify.g} carries out an
+independent check in GAP \cite{gap}, using that system's own character
+theory rather than any formula proved here.  Since $|G|=2^{135}$ cannot
+be built, it verifies instead the two ingredients the counterexample is
+assembled from.  First, the arithmetic of Section~\ref{sec:design} at
+$\dim V=7$: the orbit sizes, $C_V(A)=0$, the identity
+$1+21+21+21=64$, and the count of twenty $A$-stable halves of $V$.
+Second, the structural statements of Section~\ref{sec:family} in the
+same family $G=C_2\wr V$, for $\dim V=2$ and $3$, where $|G|=2^6$ and
+$2^{11}$: GAP confirms $C_G(A)=B^A$ elementary abelian of the predicted
+rank, $|\Irr_A(G)|=|C/C'|$, that $\Ind_B^G\lambda_{\delta_0}$ is
+irreducible of degree $|V|$, and Lemma~\ref{lem:delta-values} --- the
+identity $\chi_{\delta_0}(c)=|V|-2|\supp c|$ that produces the zero ---
+at every $A$-stable $c$.  It also confirms $|N_A(G)|=|C/C'|$ there, as
+Corollary~\ref{cor:balance} predicts for these unbalanced $V$.
+
+The script closes with an instructive case.  Dropping $C_V(A)=0$ allows
+a balanced $V$ of dimension $3$, so GAP can display vanishing invariant
+characters outright; there $|G|=2048$, $C$ is nonabelian of order $32$,
+and $|\Irr_A(G)|=|\Irr(C)|=14$ while $|C/C'|=8=|N_A(G)|$.  Problem
+21.100 survives, because the slack between $|C/C'|$ and $|\Irr(C)|$
+absorbs the zeros.  The fixed-point-free hypothesis is precisely what
+removes that slack, and Theorem~\ref{thm:general} is exactly the
+observation that once it is removed, a single zero suffices.
+
 \section*{Acknowledgments}
 
 The author thanks Abhinav Namboori for helpful discussions and comments on the exposition.
@@ -1798,6 +1823,11 @@ Ann. of Math. (2) \textbf{38} (1937), 533--550.
 W. Feit and J. G. Thompson,
 \emph{Solvability of groups of odd order},
 Pacific J. Math. \textbf{13} (1963), 775--1029.
+
+\bibitem{gap}
+The GAP Group,
+\emph{GAP -- Groups, Algorithms, and Programming}, Version 4.14.0, 2024,
+\url{https://www.gap-system.org}.
 
 \bibitem{glauberman}
 G. Glauberman,
