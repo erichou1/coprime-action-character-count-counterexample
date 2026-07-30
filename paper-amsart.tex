@@ -1,23 +1,19 @@
-\documentclass[11pt]{article}
+\documentclass[11pt,a4paper,reqno]{amsart}
 
-\usepackage[margin=1in]{geometry}
+\usepackage[a4paper,margin=1in]{geometry}
 \usepackage{amsmath,amssymb,amsthm,mathtools}
 \usepackage{microtype}
 \usepackage{enumitem}
 \usepackage{booktabs}
 \usepackage[hidelinks]{hyperref}
 \emergencystretch=1em
-\hypersetup{
-  pdftitle={Coprime actions and characters nonvanishing on the fixed-point subgroup},
-  pdfauthor={Eric Hou}
-}
+\hypersetup{pdftitle={Coprime actions and nonvanishing characters}}
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{corollary}[theorem]{Corollary}
 \theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definition}
 \newtheorem*{problem}{Problem 21.100}
 \newtheorem*{problem63}{Problem 6.3}
 \theoremstyle{remark}
@@ -26,55 +22,42 @@
 \newcommand{\F}{\mathbf F}
 \newcommand{\Irr}{\operatorname{Irr}}
 \newcommand{\Ind}{\operatorname{Ind}}
-\newcommand{\Res}{\operatorname{Res}}
 \newcommand{\supp}{\operatorname{supp}}
 \newcommand{\wt}{\operatorname{wt}}
 \newcommand{\one}{\mathbf 1}
 
-\title{Coprime actions and characters nonvanishing\\
-on the fixed-point subgroup}
-\author{Eric Hou}
-\date{July 29, 2026}
+\title{Coprime actions and nonvanishing characters}
+\date{}
 
 \begin{document}
-\maketitle
 
 \begin{abstract}
-Let a finite group $A$ act coprimely on a finite group $G$, and put
-$C=C_G(A)$.  Burnside's theorem says that the irreducible characters of
-a group that vanish nowhere are exactly the linear ones.  Navarro asked,
-in Problem 21.100 of the 21st Kourovka Notebook, whether the coprime
-analogue holds: is the number of $A$-invariant $\chi\in\Irr(G)$ with
-$\chi_C$ nowhere zero always $|C/C'|$?  We answer this negatively.
-
-Our example has $A$ cyclic of order $21$ acting on $G=B\rtimes V$, where
-$V=\F_4^2\oplus\F_8$ and $B$ is the group of Boolean functions on $V$.
-Here $C\cong C_2^{12}$ is abelian and carries all $4096$ invariant
-characters, yet an explicit invariant character of degree $128$ vanishes
-at an explicit element of $C$; a refinement gives the exact count
-$|N_A(G)|=1728$.
-
-Three further consequences follow.  Since $C$ is abelian, the example
-refutes the criterion proposed with the problem: that $\chi_C$ be
-nowhere zero exactly when the Glauberman--Isaacs correspondent $\chi^*$
-is linear.  This is Problem 6.3 of Navarro's problem list, and by a
-theorem of Isaacs the example equally refutes the corresponding
-statement about his $A$-head characters, answering a question that
-closes that work.  It
-shows that the $p$-group hypothesis, under which one direction of
-Problem 6.3 is known, cannot be dropped.  Finally, passing to
-$\Gamma=G\rtimes A$, whose Carter subgroup is $K=C\times A$, gives a
-solvable group with $36288$ characters nowhere zero on $K$ against
-$|K/K'|=86016$.  This refutes a conjecture of Navarro that Isaacs
-reports is supported by abundant computational evidence.
-
-None of this depends on the particular $V$: the construction works
-whenever $V$ has an $A$-stable subset of half its size.  Infinitely many
-pairs $(A,V)$ qualify, and none of dimension below $7$ does; over all
-operator groups of odd order the least dimension is therefore $7$, the
-least group order $2^{135}$, and the least operator order $15$.  Exact machine verifications, independent
-of the proofs, accompany the paper.
+Let a finite group $A$ act coprimely on a finite group $G$ and put
+$C=C_G(A)$; Problem 21.100 of the Kourovka Notebook asks whether the
+number of $A$-invariant $\chi\in\Irr(G)$ with $\chi_C$ nowhere zero is
+always $|C/C'|$, the coprime analogue of Burnside's theorem on
+nonvanishing characters.  We answer this negatively, with $A$ cyclic of
+order $21$ acting on $G=B\rtimes V$, where $V=\F_4^2\oplus\F_8$ and $B$
+is the group of Boolean functions on $V$: here $C\cong C_2^{12}$ carries
+all $4096$ invariant characters, yet only $1728$ of them are nowhere
+zero on $C$.  Since $C$ is abelian, the example also refutes Problem 6.3 of
+Navarro's problem list --- that $\chi_C$ be nowhere zero exactly when
+the Glauberman--Isaacs correspondent is linear --- and hence, by a
+theorem of Isaacs, the corresponding statement about his head
+characters.
+Passing to $\Gamma=G\rtimes A$, whose Carter subgroup is $K=C\times A$,
+gives a solvable group with $36288$ characters nowhere zero on $K$
+against $|K/K'|=86016$, refuting a conjecture of Navarro reported by
+Isaacs.  The construction works whenever $V$ has an $A$-stable subset of
+half its size, which happens for infinitely many pairs $(A,V)$ and for
+none of dimension below $7$; over all operator groups of odd order the
+least dimension is therefore $7$, the least group order $2^{135}$, and
+the least operator order $15$.  Exact
+machine verifications, independent of the proofs, accompany the paper.
 \end{abstract}
+
+\maketitle
+
 
 \section{Introduction}
 
@@ -88,13 +71,9 @@ Now let $A$ act on $G$ by automorphisms with $(|A|,|G|)=1$, and let
  C=C_G(A)
 \]
 be the fixed-point subgroup.  Write
-\[
- \Irr_A(G)=\{\chi\in\Irr(G):\chi^a=\chi\text{ for all }a\in A\}
-\]
+$\Irr_A(G)=\{\chi\in\Irr(G):\chi^a=\chi\text{ for all }a\in A\}$
 for the set of $A$-invariant irreducible characters of $G$, and
-\[
- N_A(G)=\{\chi\in\Irr_A(G):\chi(c)\neq0\text{ for all }c\in C\}
-\]
+$N_A(G)=\{\chi\in\Irr_A(G):\chi(c)\neq0\text{ for all }c\in C\}$
 for those whose restriction to $C$ is nonvanishing.  Taking $A=1$ gives
 $C=G$ and $\Irr_A(G)=\Irr(G)$, so Burnside's theorem says
 $|N_1(G)|=|G/G'|$.  The following problem asks whether this persists
@@ -265,18 +244,9 @@ Let
  B=\{f:V\to\F_2\}
 \]
 be the additive group of Boolean functions on $V$, so
-$B\cong C_2^{|V|}$.  For $t\in V$ let $\tau_t\in\operatorname{Aut}(B)$
-be translation,
-\[
- (\tau_tf)(x)=f(x+t),
-\]
-and form the semidirect product
-\[
- G=B\rtimes V,
- \qquad
- (f,t)(g,s)=(f+\tau_tg,\,t+s),
-\]
-of order $2^{|V|}\cdot|V|$.  Since $|A|$ is odd, $A$ acts coprimely
+$B\cong C_2^{|V|}$; for $t\in V$ let $\tau_t\in\operatorname{Aut}(B)$
+be translation, $(\tau_tf)(x)=f(x+t)$.  Form the semidirect product
+$G=B\rtimes V$ with $(f,t)(g,s)=(f+\tau_tg,\,t+s)$, of order $2^{|V|}\cdot|V|$.  Since $|A|$ is odd, $A$ acts coprimely
 on $G$ once we check that it acts at all:
 
 \begin{lemma}\label{lem:action}
@@ -319,27 +289,15 @@ $B^A$.  Being elementary abelian, $C$ has $C'=1$.
 
 \subsection{The irreducible characters of \texorpdfstring{$G$}{G}}
 
-For $u,f\in B$ put
-\[
- \langle u,f\rangle=\sum_{x\in V}u(x)f(x)\in\F_2,
- \qquad
- \lambda_u(f)=(-1)^{\langle u,f\rangle} .
-\]
-The pairing is nondegenerate, so $u\mapsto\lambda_u$ is an isomorphism
+For $u,f\in B$ put $\langle u,f\rangle=\sum_{x\in V}u(x)f(x)\in\F_2$
+and $\lambda_u(f)=(-1)^{\langle u,f\rangle}$.  The pairing is nondegenerate, so $u\mapsto\lambda_u$ is an isomorphism
 $B\to\Irr(B)$.  Conjugation by $(0,t)$ sends $(f,0)$ to $(\tau_tf,0)$,
 and since $\langle u,\tau_tf\rangle=\langle\tau_tu,f\rangle$ we get
 $\lambda_u^{(0,t)}=\lambda_{\tau_tu}$.  Thus $V$ permutes $\Irr(B)$ the
-same way it permutes $B$, and the stabilizer of $\lambda_u$ is
-$B\rtimes V_u$ where
-\[
- V_u=\{t\in V:\tau_tu=u\} .
-\]
-Write $I_u=B\rtimes V_u$; it is normal in $G$, being the preimage of
+same way it permutes $B$, and the stabilizer of $\lambda_u$ is $B\rtimes V_u$, where
+$V_u=\{t\in V:\tau_tu=u\}$.  Write $I_u=B\rtimes V_u$; it is normal in $G$, being the preimage of
 $V_u\le V$ under $G\to G/B\cong V$.  For $\mu\in\Irr(V_u)$ the formula
-\[
- \theta_{u,\mu}(f,t)=\lambda_u(f)\mu(t)
-\]
-defines a linear character of $I_u$, because $\tau_tu=u$ for $t\in
+$\theta_{u,\mu}(f,t)=\lambda_u(f)\mu(t)$ defines a linear character of $I_u$, because $\tau_tu=u$ for $t\in
 V_u$.  Put $\chi_{u,\mu}=\Ind_{I_u}^G\theta_{u,\mu}$.
 
 \begin{proposition}\label{prop:all-irr}
@@ -401,20 +359,14 @@ $X^A\subseteq V^A=0$.
 Next, the map $a\mapsto z_a+V_u$ is a $1$-cocycle: applying
 Lemma~\ref{lem:action} twice,
 $\tau_{z_{ab}}u=(ab)\cdot u=a\cdot(\tau_{z_b}u)=\tau_{a\cdot z_b+z_a}u$,
-so $z_{ab}\equiv a\cdot z_b+z_a \pmod{V_u}$.  Put
-\[
- w=\sum_{b\in A}z_b .
-\]
-Summing the cocycle identity over $b\in A$ and reindexing the left side
+so $z_{ab}\equiv a\cdot z_b+z_a \pmod{V_u}$.  Put $w=\sum_{b\in A}z_b$.  Summing the cocycle identity over $b\in A$ and reindexing the left side
 gives $w\equiv a\cdot w+|A|z_a\pmod{V_u}$, and $|A|=1$ in $\F_2$ because
 $|A|$ is odd, so
 \[
  z_a\equiv a\cdot w+w\pmod{V_u}\qquad\text{for every }a\in A .
 \]
-Therefore $a\cdot w+z_a\equiv w\pmod{V_u}$, and
-\[
- a\cdot(\tau_wu)=\tau_{a\cdot w}(a\cdot u)=\tau_{a\cdot w+z_a}u=\tau_wu
-\]
+Therefore $a\cdot w+z_a\equiv w\pmod{V_u}$, so
+$a\cdot(\tau_wu)=\tau_{a\cdot w}(a\cdot u)=\tau_{a\cdot w+z_a}u=\tau_wu$
 for every $a$, so $\tau_wu\in B^A$.  Finally, if $u$ and $\tau_tu$ both
 lie in $B^A$ then $t+V_u\in(V/V_u)^A=0$, so $t\in V_u$ and
 $\tau_tu=u$.
@@ -422,10 +374,7 @@ $\tau_tu=u$.
 
 \begin{proposition}\label{prop:invariant-irr}
 For $u\in B^A$ let $\widetilde\lambda_u(f,t)=\lambda_u(f)$ and
-\[
- \chi_u=\Ind_{I_u}^G\widetilde\lambda_u .
-\]
-Then $u\mapsto\chi_u$ is a bijection from $B^A$ onto $\Irr_A(G)$.  In
+$\chi_u=\Ind_{I_u}^G\widetilde\lambda_u$.  Then $u\mapsto\chi_u$ is a bijection from $B^A$ onto $\Irr_A(G)$.  In
 particular
 \[
  |\Irr_A(G)|=|B^A|=|C/C'| .
@@ -478,8 +427,11 @@ For $u,c\in B^A$,
 \begin{proof}
 As $I_u\trianglelefteq G$ and $c\in B\subseteq I_u$, the induced
 character formula gives
-$\chi_u(c)=\sum_{x}\widetilde\lambda_u(x^{-1}(c,0)x)$ with $x$ running
-over representatives of $G/I_u$; take $x=(0,t)$ for $t\in V/V_u$.
+\[
+ \chi_u(c)=\sum_x\widetilde\lambda_u\bigl(x^{-1}(c,0)x\bigr),
+\]
+with $x$ running over representatives of $G/I_u$; take $x=(0,t)$ for
+$t\in V/V_u$.
 Conjugation gives $(0,t)^{-1}(c,0)(0,t)=(\tau_tc,0)$, and
 $\langle u,\tau_tc\rangle=\langle\tau_tu,c\rangle$.  The summand is
 constant on cosets of $V_u$, whence the second form.
@@ -531,11 +483,7 @@ sufficient.
 \begin{lemma}\label{lem:delta-values}
 Let $u=\delta_0\in B^A$ be the indicator function of $0\in V$.  Then
 $V_u=0$, so $\chi_u=\Ind_B^G\lambda_u\in\Irr_A(G)$ has degree $|V|$,
-and for every $c\in B^A$
-\[
- \chi_u(c)=|V|-2\,|\supp c| .
-\]
-Hence $\chi_u(c)=0$ if and only if $|\supp c|=|V|/2$.
+and $\chi_u(c)=|V|-2\,|\supp c|$ for every $c\in B^A$.  Hence $\chi_u(c)=0$ if and only if $|\supp c|=|V|/2$.
 \end{lemma}
 
 \begin{proof}
@@ -952,17 +900,10 @@ they start.
 
 \section{The counterexample}\label{sec:short}
 
-We can now fix the example and prove the inequality.  Let
-\[
- U=\F_4^2,\qquad W=\F_8,\qquad V=U\oplus W,
-\]
-an $\F_2$-space of dimension $7$, so $|V|=128$.  Choose
-$\omega\in\F_4^\times$ of order $3$ and $\zeta\in\F_8^\times$ of order
-$7$, and let
-\[
- T(x_1,x_2,y)=(\omega x_1,\omega x_2,\zeta y),
-\]
-an $\F_2$-linear map of order $21$.  Let $A=\langle a\rangle\cong C_{21}$
+We can now fix the example and prove the inequality.  Let $U=\F_4^2$, $W=\F_8$ and $V=U\oplus W$, an $\F_2$-space of dimension $7$, so $|V|=128$.  Choose
+$\omega\in\F_4^\times$ of order $3$ and $\zeta\in\F_8^\times$ of order $7$, and let
+$T(x_1,x_2,y)=(\omega x_1,\omega x_2,\zeta y)$, an $\F_2$-linear map
+of order $21$.  Let $A=\langle a\rangle\cong C_{21}$
 act on $V$ with $a$ acting as $T$.  Since $\omega\neq1$ and
 $\zeta\neq1$ we have $C_V(A)=C_V(T)=0$, so~\eqref{eq:no-fixed-V} holds,
 and $A$ acts as in Lemma~\ref{lem:action} on
@@ -1041,7 +982,9 @@ Theorem~\ref{thm:counterexample} is the whole counterexample, and every
 step in it can be checked by hand.  The remaining sections determine
 $|N_A(G)|$ exactly.
 
-\section{Radial coordinates}\label{sec:radial}
+\section{Computing the exact count}\label{sec:radial}
+
+\subsection*{Radial coordinates}
 
 From now on $A$, $V$, $G$ are as in Section~\ref{sec:short}.  To compute
 with $B^A$ we use the labeling in the table above.
@@ -1172,14 +1115,9 @@ so that Lemma~\ref{lem:value-formula} becomes
  |V_u|\,\chi_u(c)=S(H_0)+7S(H_1).
 \end{equation}
 
-\section{The exact zero criterion}\label{sec:criterion}
+\subsection*{The exact zero criterion}\label{sec:criterion}
 
-Let
-\[
- \delta=(1,0,0,0,0,0),\qquad
- J=(1,1,1,1,1,1),
-\]
-and for $R\subseteq\{1,\dots,5\}$ let $\rho_R=(0,\one_R)$ with
+Let $\delta=(1,0,0,0,0,0)$ and $J=(1,1,1,1,1,1)$, and for $R\subseteq\{1,\dots,5\}$ let $\rho_R=(0,\one_R)$ with
 $\one_R$ the indicator vector of $R$.
 
 \begin{lemma}[Zero patterns]\label{lem:zero-patterns}
@@ -1254,11 +1192,7 @@ map of the radial subspace.
 
 \begin{proposition}[Complete zero criterion]\label{prop:zero-criterion}
 Let $u=(X,Y)\in B^A$, put $P=X+Y=(p_0,p)$ and $Y=(y_0,y)$, and when
-$\tau(P)=0$ set
-\[
- r=p+p_0\one .
-\]
-Then $\chi_u$ vanishes at some element of $C$ if and only if one of the
+$\tau(P)=0$ set $r=p+p_0\one$.  Then $\chi_u$ vanishes at some element of $C$ if and only if one of the
 following holds:
 \begin{enumerate}[label=\textup{(\roman*)}]
 \item $\tau(P)=1$;
@@ -1329,17 +1263,14 @@ $r\cdot y=r\cdot q$, which with~\eqref{eq:Q-critical} gives
 $r\cdot y=1+p_0$.
 
 Conversely, assume $\tau(Y)=1$ and $r\cdot y=1+p_0$, and set
-\[
- q=y+(1+y_0)\one,\qquad q_0=1 .
-\]
-From $\sum_iy_i=1+y_0$ we get $\sigma=\sum_iq_i=0$, hence
+$q=y+(1+y_0)\one$ and $q_0=1$.  From $\sum_iy_i=1+y_0$ we get $\sigma=\sum_iq_i=0$, hence
 $\tau(Q)=1$; and $r\cdot q=r\cdot y=1+p_0$ because $r\cdot\one=0$.  So
 \eqref{eq:Q-critical} holds, and the left side of
 \eqref{eq:critical-affine} is $y+y+(1+y_0)\one+(1+y_0)\one=0$.  Hence a
 suitable $E$ exists and $\chi_u$ has a zero on $C$.
 \end{proof}
 
-\section{The exact count}\label{sec:count}
+\subsection*{The count}\label{sec:count}
 
 \begin{theorem}\label{thm:count}
 For the action of Section~\ref{sec:short},
@@ -1515,12 +1446,8 @@ hence $N_\Gamma(A)=C_G(A)A=K$, and $K$ is self-normalizing.
 \end{proof}
 
 We now compute the characters of $\Gamma$ that are nonvanishing on $K$.
-Write $\Gamma=B\rtimes(V\rtimes A)$ and, for $a\in A$ acting on $V$ as
-$T^k$, put
-\[
- S_k=\{t\in V:(T^k+1)t\in V_u\},
-\]
-a $T$-invariant subgroup of $V$ containing $V_u$.
+Write $\Gamma=B\rtimes(V\rtimes A)$ and, for $a\in A$ acting on $V$ as $T^k$, put
+$S_k=\{t\in V:(T^k+1)t\in V_u\}$, a $T$-invariant subgroup of $V$ containing $V_u$.
 
 \begin{lemma}\label{lem:gamma-values}
 Let $u\in B^A$ and $\theta=\chi_u$.  Then $\theta$ extends to $\Gamma$,
@@ -1555,10 +1482,7 @@ irreducible characters over $\theta$, and these are all of them.
 
 Take $x_t=(0,(t,1))$ for $t\in V/V_u$ as a transversal of
 $\Gamma/(B\rtimes W_u)$.  A direct computation gives
-\[
- x_t^{-1}(c,(0,a))x_t=\bigl(\tau_tc,((1+T^k)t,a)\bigr),
-\]
-which lies in $B\rtimes W_u$ exactly when $(1+T^k)t\in V_u$, that is,
+$x_t^{-1}(c,(0,a))x_t=\bigl(\tau_tc,((1+T^k)t,a)\bigr)$, which lies in $B\rtimes W_u$ exactly when $(1+T^k)t\in V_u$, that is,
 when $t\in S_k$.  For such $t$ the value of $\eta_\psi$ is
 $\lambda_u(\tau_tc)\psi(a)=(-1)^{\langle\tau_tu,c\rangle}\psi(a)$, and
 the induced-character formula gives the stated sum.
@@ -1711,7 +1635,7 @@ we obtain is the one of Theorem~\ref{thm:carter}, of order
 $2^{135}\cdot21$.
 \end{remark}
 
-\section{Scope: the surrounding problems}\label{sec:navarro}
+\subsection*{Scope: the surrounding problems}\label{sec:navarro}
 
 Problem 6.3 sits inside a group of related problems in
 \cite{navarro-problems}, and Navarro raises it there as an instance of a
@@ -1805,13 +1729,15 @@ counterexample there would have to refute the other, and by
 Proposition~\ref{prop:prime-fails} it would have to be built
 differently from ours.
 
-\section{Verification}\label{sec:verification}
+\subsection*{Verification}\label{sec:verification}
 
 The proof above is self-contained; the computations described here are
 independent checks and are not used anywhere in it.  Four exact
 programs, in integer and $\F_2$ arithmetic with no floating point, are
 available at
-\url{https://github.com/erichou1/coprime-action-zero-free-characters}.
+\begin{center}
+\url{https://github.com/erichou1/coprime-action-zero-free-characters}
+\end{center}
 
 Three of them compute $|N_A(G)|$ independently: a full $128$-point
 integer Walsh transform, which for each of the $4096$ functions
