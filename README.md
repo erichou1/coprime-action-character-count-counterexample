@@ -81,8 +81,9 @@ this enumeration.
 
 ## Repository contents
 
-- `main.tex`: LaTeX source for the paper.
-- `paper.pdf`: compiled manuscript.
+- `main.tex`, `paper.pdf`: LaTeX source and compiled manuscript.
+- `paper-amsart.tex`, `paper-amsart.pdf`: the same paper in `amsart` on A4,
+  without an author entry.
 - `verification/design_search.py`: the design-space enumeration — every
   candidate with \(\dim V\le7\), and the wider search over \(|A|\le105\),
   \(\dim V\le14\).
@@ -189,8 +190,10 @@ A TeX distribution containing `amsmath`, `amsthm`, `mathtools`, `microtype`,
 make paper
 ```
 
-The build runs `pdflatex` twice and writes `main.pdf`. The tracked
-`paper.pdf` is the publication copy produced from the same `main.tex` source.
+This runs `pdflatex` twice on each of `main.tex` and `paper-amsart.tex`.
+The tracked `paper.pdf` is the publication copy, produced from `main.tex`;
+the two sources carry identical mathematics and differ only in document
+class and front matter.
 
 ## Reference
 
